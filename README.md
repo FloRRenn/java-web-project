@@ -7,7 +7,6 @@ Xây dựng website quản lý bán vé xem phim với các tính năng chí
 Đây là repo tổng hợp lại từ 2 repo khác do chính nhóm em phát triển:
 - Back-end: https://github.com/FloRRenn/Java-Web/tree/backend
 - Front end: https://github.com/FloRRenn/Fe-java/
-<br/>
 
 # **3. Thành viên nhóm:**
 | Sinh Viên               | MSSV        | Github Username   |
