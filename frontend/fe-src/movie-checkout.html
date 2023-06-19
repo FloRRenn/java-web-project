@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/odometer.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <title>PenguTicket</title>
+
+
+</head>
+
+<body>
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+    <!-- ==========Overlay========== -->
+    <div class="overlay"></div>
+    <a href="/checkout#0" class="scrollToTop">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- ==========Overlay========== -->
+
+    <!-- ==========Header-Section========== -->
+    <header class="header-section">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="/">
+                        <img src="assets/images/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                <ul class="menu">
+                    
+                </ul>
+                <div class="header-bar d-lg-none">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+            </div>
+        </div>
+    </header>
+    <!-- ==========Header-Section========== -->
+
+    <!-- ==========Banner-Section========== -->
+    <section class="details-banner hero-area bg_img seat-plan-banner" data-background="./assets/images/banner/banner04.jpg">
+        <div class="container">
+            <div class="details-banner-wrapper">
+                <div class="details-banner-content style-two">
+                    <h3 class="title">Thanh toán</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Banner-Section========== -->
+
+    <!-- ==========Page-Title========== -->
+    <section class="page-title bg-one">
+        <div class="container">
+            <div class="page-title-area">
+                <div class="item md-order-1">
+                    <a href="/booking" class="custom-button back-button">
+                        <i class="flaticon-double-right-arrows-angles back-button"></i>Về trang trước
+                    </a>
+                </div>
+                <div class="item">
+                    <h5 class="title countdown">15:00</h5>
+                    <p>Số phút còn lại</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Page-Title========== -->
+
+    <!-- ==========Movie-Section========== -->
+    <div class="movie-facility padding-bottom padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="checkout-widget checkout-card mb-0">
+                        <h5 class="title">Phương thức thanh toán</h5>
+                        <ul class="payment-option">
+                            <li class="active" data-payment="VNPAY">
+                                <a>
+                                    <img src="assets/images/payment/vnpay.svg" alt="payment">
+                                    <span>VNPAY</span>
+                                </a>
+                            </li>
+                            <li data-payment="VNPAYQR">
+                                <a>
+                                    <img src="assets/images/payment/vnpay-qr.svg" alt="payment">
+                                    <span>QR Code</span>
+                                </a>
+                            </li>
+                            <li data-payment="VNBANK">
+                                <a>
+                                    <img src="assets/images/payment/atm.svg" alt="payment">
+                                    <span>Thẻ nội địa</span>
+                                </a>
+                            </li>
+                            <li data-payment="INTCARD">
+                                <a>
+                                    <img src="assets/images/payment/credit.svg" alt="payment">
+                                    <span>Thẻ quốc tế</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="booking-summery bg-one">
+                        <h4 class="title">Vé xem phim</h4>
+                        <ul>
+                            <li>
+                                <h6 class="subtitle" id="movie-name"></h6>
+                                <span class="info" id="movie-info"></span>
+                            </li>
+                            <li>
+                                <h6 class="subtitle"><span></span><span id="hall-name"></span></h6>
+                                <div class="info"><span id="seat-info"></span> </div>
+                            </li>
+                            <!-- <li>
+                                <h6 class="subtitle mb-0"><span>Giá vé</span><span id="price">$150</span></h6>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="proceed-area  text-center">
+                        <h6 class="subtitle"><span>Thành Tiền</span><span id="price"></span></h6>
+                        <a class="custom-button confirm">Thanh toán</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Movie-Section========== -->
+
+    <!-- ==========Newslater-Section========== -->
+    <footer class="footer-section">
+        <div class="newslater-section padding-bottom">
+            <div class="container">
+                <div class="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+                    <div class="newslater-wrapper">
+                        <h5 class="cate">Đăng ký PenguTicket </h5>
+                        <h3 class="title">Để nhận các thông báo và ưu đãi mới nhất</h3>
+                        <form class="newslater-form">
+                            <input type="text" placeholder="Nhập email của bạn">
+                            <button type="submit">Đăng ký</button>
+                        </form>
+                        <p>Chúng tôi tôn trọng quyền riêng tư của bạn, vì vậy chúng tôi không bao giờ chia sẻ thông tin của bạn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <a href="https://pixner.net/boleto/demo/index-1.html">
+                        <img src="assets/images/footer/footer-logo.png" alt="footer">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-area">
+                    <div class="left">
+                        <p>Copyright © 2020.All Rights Reserved By <a href="/checkout#0">PenguTicket </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ==========Newslater-Section========== -->
+
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery.cookie.min.js"></script>
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <script src="assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/countdown.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/nice-select.js"></script>
+    <script src="assets/js/js.cookie.min.js"></script>
+    <script src="assets/js/requestAPI.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/movie-checkout.js"></script>
+</body>
+
+</html>

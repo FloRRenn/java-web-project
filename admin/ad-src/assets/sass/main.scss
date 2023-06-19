@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800&display=swap');
+/*
+Template Name: Movtic - Online Ticket Booking Website HTML Template
+Template URI: http://pixner.net/movtic/movtic/
+Author: pixelaxis
+Author URI: https: //themeforest.net/user/pixelaxis
+Description: Movtic | Online Ticket Booking Website HTML Template. Movtic is a Pixel-Perfect Powerful,
+Online Ticket Booking Website HTML Template for all types of Cinema Hall and Online Premium TV Channel.
+Version: 1.0.0
+Text Domain: 
+*/
+/*
+///// CSS Index \\
+1. Reset CSS Start
+2. General CSS
+3. 
+---------------------------
+*/
+@import '_abstracts/_mixins';
+@import '_abstracts/_variables';
+@import '_base/_reset';
+@import '_base/_global';
+@import '_base/_typography';
+@import '_base/_about';
+@import '_layout/_footer';
+@import '_layout/_forms';
+@import '_layout/_header';
+@import '_layout/_banner';
+@import '_layout/_navigation';
+@import '_layout/_sidebar';
+@import '_layout/_section';
+@import '_layout/_blog';
+@import '_components/_buttons';

@@ -1,0 +1,90 @@
+version: "3.8"
+
+services:
+
+  frontend-app:
+    container_name: frontend-app
+    restart: 'unless-stopped'
+    build: ./frontend
+    ports:
+      - 80:80
+    networks:
+      - frontend_net
+
+  admin-app:
+    container_name: admin-app
+    restart: 'unless-stopped'
+    build: ./admin
+    ports:
+      - 81:80
+    networks:
+      - admin_net
+
+  db:
+    container_name: mysql-database
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: CC6tjBh6mkJ8h8PXU7cg8zUx4E6ABFrMQ44EaxU59yfTvYyzWS
+      MYSQL_DATABASE: cinemaDB
+      MYSQL_USER: HzSRs842px7MCXZtfZHVZN6f8
+      MYSQL_PASSWORD: 66JJVzfmsX79uxeJGRf95NevSP2fP9u6e5yBVRQmGUY9jbVg54
+      MYSQL_ALLOW_EMPTY_PASSWORD: no
+    volumes:
+      - ./docker-config/sql/cinema.sql:/docker-entrypoint-initdb.d/cinema.sql
+    restart: always
+    networks:
+      - backend_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+
+  restful-app:
+    container_name: backend-app
+    build: ./backend
+    restart: 'unless-stopped'
+    # image: maven:3.8.3-openjdk-17
+    # command: mvn package
+    # working_dir: /app
+    # volumes:
+    #   - ./backend/be-src/:/app/
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 9595:9595
+    networks:
+      - backend_net
+
+  phpmyadmin:
+    container_name: php-my-admin-app
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 32346:80
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: CC6tjBh6mkJ8h8PXU7cg8zUx4E6ABFrMQ44EaxU59yfTvYyzWS
+    networks:
+      - backend_net
+
+networks:
+  backend_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+
+  frontend_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.168.0.0/24
+  
+  admin_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+
+# default-src 'none'; script-src 'self'; connect-src 'self' *.coderlod.xyz; img-src * 'self' data: https:; frame-ancestors 'self'; form-action 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;

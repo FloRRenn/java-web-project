@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/odometer.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <title>PenguTicket</title>
+
+</head>
+
+<body>
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+    <!-- ==========Overlay========== -->
+    <div class="overlay"></div>
+    <a href="/movies#0" class="scrollToTop">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- ==========Overlay========== -->
+
+    <!-- ==========Header-Section========== -->
+    <header class="header-section">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="/">
+                        <img src="assets/images/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                <ul class="menu">
+
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- ==========Header-Section========== -->
+
+    <!-- ==========Banner-Section========== -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content">
+                <h1 class="title bold">Đặt <span class="color-theme">Vé </span> Xem phim</h1>
+                <p>Mua vé xem phim trước, tìm thời gian chiếu phim, xem trailer, đọc các bài phê bình phim và hơn thế nữa</p>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Banner-Section========== -->
+
+    <!-- ==========Ticket-Search========== -->
+    <section class="search-ticket-section padding-top pt-lg-0">
+        <div class="container">
+            <div class="search-tab bg_img" data-background="./assets/images/ticket/ticket-bg01.jpg">
+                <div class="row align-items-center mb--20">
+                    <div class="col-lg-6 mb-20">
+                        <div class="search-ticket-header">
+                            <h6 class="category">Chào mừng PenguTicket </h6>
+                            <h3 class="title">Bạn đang tìm kiếm phim gì ?</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-area">
+                    <div class="tab-item active">
+                        <form class="ticket-search-form">
+                            <div class="form-group large" style="width:100%">
+                                <input type="text" placeholder="Tên phim tìm kiếm" id="search-val">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <!-- ==========Ticket-Search========== -->
+
+    <!-- ==========Movie-Section========== -->
+    <section class="movie-section padding-top padding-bottom">
+        <div class="container">
+            <div class="row flex-wrap-reverse justify-content-center">
+                <div class="col-sm-10 col-md-8 col-lg-3">
+                    <div class="widget-1 widget-banner">
+                        <div class="widget-1-body">
+
+                        </div>
+                    </div>
+                    <div class="widget-1 widget-check">
+                        <div class="widget-1-body">
+                            <h6 class="subtitle">Trải nghiệm</h6>
+                            <div class="check-area">
+                                <div class="form-group">
+                                    <input type="checkbox" name="mode" id="mode1"><label for="mode1">2d</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="mode" id="mode2"><label for="mode2">3d</label>
+                                </div>
+                            </div>
+   
+                        </div>
+                    </div>
+                    <div class="widget-1 widget-check">
+                        <div class="widget-1-body">
+                            <h6 class="subtitle">Thể loại</h6>
+                            <div class="check-area" id="genre-container">
+                                
+                            </div>
+ 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 mb-50 mb-lg-0">
+                    <div class="filter-tab tab">
+                        <div class="filter-area">
+                            <div class="filter-main">
+                                <div class="left">
+                                    <div class="item">
+                                        <span class="show">Show :</span>
+                                        <select class="select-bar" id="show-length">
+                                            <option value="12">12</option>
+                                            <option value="15">15</option>
+                                            <option value="18">18</option>
+                                            <option value="21">21</option>
+                                            <option value="24">24</option>
+                                            <option value="27">27</option>
+                                            <option value="30">30</option>
+                                        </select>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-area">
+                            <div class="tab-item active">
+                                <div class="row mb-10 justify-content-center" id="movie-list-container">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination-area text-center" id="switch-page-container">
+                            <a><i class="fas fa-angle-double-left"></i><span>Trang trước</span></a>
+                            <a>1</a>
+                            <a>2</a>
+                            <a>3</a>
+                            <a><span>Trang sau</span><i class="fas fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Movie-Section========== -->
+
+    <!-- ==========Newslater-Section========== -->
+    <footer class="footer-section">
+        <div class="newslater-section padding-bottom">
+            <div class="container">
+                <div class="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
+                    <div class="newslater-wrapper">
+                        <h5 class="cate">Đăng ký PenguTicket </h5>
+                        <h3 class="title">Để nhận các thông báo và ưu đãi mới nhất</h3>
+                        <form class="newslater-form">
+                            <input type="text" placeholder="Nhập email của bạn">
+                            <button type="submit">Đăng ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <a href="https://pixner.net/boleto/demo/index-1.html">
+                        <img src="assets/images/footer/footer-logo.png" alt="footer">
+                    </a>
+                </div>
+                
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-area">
+                    <div class="left">
+                        <p>Copyright © 2020.All Rights Reserved By <a href="/movies#0">PenguTicket </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ==========Newslater-Section========== -->
+
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery.cookie.min.js"></script>
+    <script src="assets/js/sweetalert2.min.js"></script>
+    <script src="assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/countdown.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/nice-select.js"></script>
+    <script src="assets/js/js.cookie.min.js"></script>
+    <script src="assets/js/requestAPI.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/movie-grid.js"></script>
+</body>
+
+</html>
