@@ -16,6 +16,7 @@ public class MovieInfoResponse {
 	private String releaseDate;
 	private String country;
 	private String image;
+	private String large_image;
 	private String trailer;
 	private String actors;
 	private List<Genre> genres;
@@ -31,15 +32,17 @@ public class MovieInfoResponse {
 		this.trailer = m.getTrailer();
 		this.actors = m.getActors();
 		this.image = m.getImage();
+		this.large_image = m.getLargeImage();
 		this.genres = m.getGenres();
 		this.durationInMins = m.getDurationInMins();
 		this.comments = this.convertType(m.getComments());
 	}
 
-	public MovieInfoResponse(Long id, String title, String image, List<Genre> genre, int durationInMins, List<Comment> comment) {
+	public MovieInfoResponse(Long id, String title, String image, String large_image, List<Genre> genre, int durationInMins, List<Comment> comment) {
 		this.id = id;
 		this.title = title;
 		this.image = image;
+		this.large_image = large_image;
 		this.genres = genre;
 		this.durationInMins = durationInMins;
 		this.comments = this.convertType(comment);
@@ -78,12 +81,15 @@ public class MovieInfoResponse {
 	}
 
 	public String getImage() {
-		return image;
+		return this.image;
 	}
 
+	public String getLargeImage() {
+		return this.large_image;
+	}
 
 	public List<Genre> getGenres() {
-		return genres;
+		return this.genres;
 	}
 
 	public int getDurationInMins() {
@@ -102,11 +108,13 @@ public class MovieInfoResponse {
 		this.title = title;
 	}
 
-
 	public void setImage(String image) {
 		this.image = image;
 	}
 
+	public void setLargeImage(String image) {
+		this.large_image = image;
+	}
 
 	public void setGenre(List<Genre> genre) {
 		this.genres = genre;

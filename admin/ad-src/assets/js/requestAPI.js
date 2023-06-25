@@ -1,7 +1,11 @@
 const localIP = 'http://localhost:9595'
 
+const GetIP = function() {
+  return localIP
+}
+
 const PenguRequestAPI = async function (method = 'GET', path = 'api', _opti = {}, _hds = {}, usingToken = false) {
-  const ip = localIP
+  const ip = GetIP()
   const url = `${ip}/${path}`
 
   let headers = new Headers();

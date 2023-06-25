@@ -2,44 +2,45 @@ package cinema.ticket.booking.request;
 
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.ManyToMany;
 
 public class MovieRequest {
 	
 	
-	@Column(name = "title",unique = true)
+	@JsonProperty("title")
 	private String title;
 	
-	@Column(name = "description")
+	@JsonProperty("description")
 	private String description;
 	
-	@Column(name = "durationInMins")
+	@JsonProperty("durationInMins")
 	private int durationInMins;
 	
-	@Column(name = "language")
+	@JsonProperty("language")
 	private String language;
 	
-	@Column(name = "releaseDate")
+	@JsonProperty("releaseDate")
 	private String releaseDate;
 	
-	@Column(name = "country")
+	@JsonProperty("country")
 	private String country;
 	
-	@JoinColumn(name = "genre")
+	@JsonProperty("genre")
 	@ManyToMany
 	private List<String> genre;
 	
-	@Column(name = "image")
+	@JsonProperty("image")
 	private String image;
+
+	@JsonProperty("large_image")
+	private String large_image;
 	
-	@Column(name = "trailer")
+	@JsonProperty("trailer")
 	private String trailer;
 	
-	@Column(name = "actors")
+	@JsonProperty("actors")
 	private String actors;
-	
 	
 	public String getTrailer() {
 		return trailer;
@@ -101,5 +102,10 @@ public class MovieRequest {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
+	public String getLargeImage() {
+		return this.large_image;
+	}
+	public void setLargeImage(String large_image) {
+		this.large_image = image;
+	}
 }

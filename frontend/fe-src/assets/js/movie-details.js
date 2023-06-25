@@ -11,6 +11,7 @@ $(async function() {
         return window.location.href = ('/')
 
     $("#movie-thumb").attr("src", movie.image)
+    $("#movie-bg").css("background-image", `url(${movie.largeImage})`)
     $("#movie-title").text(movie.title)
     $("#movie-genre").text(movie.genres.map(d=> d.genre).join(", "))
     $("#movie-trailer").attr("href", movie.trailer)
@@ -18,9 +19,9 @@ $(async function() {
     $("#movie-duration").text(GetTimeString(movie.durationInMins))
     $("#movie-description").text(movie.description)
     $("#ticket-plan").attr("href", "/booking?movie-id=" + encodeURI(movieId))
-    $('.preloader').fadeOut(1000);
+    LoadComments();
 
-    await LoadComments();
+    $('.preloader').fadeOut(1000);
 })
 
 
@@ -42,7 +43,7 @@ $("#add-comment").on( "submit", async function( event ) {
     },
     { "Content-Type": "application/json"}, true).then(r => r.json()).catch(error => {console.log(error); return false})
 
-    await LoadComments();
+    LoadComments();
 });
 
 async function LoadComments() {
@@ -50,7 +51,7 @@ async function LoadComments() {
     container.empty();
 
     let res = await PenguRequestAPI('GET', 'api/comment/movie/' + encodeURI(movieId), {}, {}, false).then(r => r.json()).catch(error => {console.log(error); return false})
-    console.log(res)
+
     for (let i = 0; i < res.length; i++) {
         let comment = res[i]
 
@@ -58,18 +59,19 @@ async function LoadComments() {
             let item = $(`
             <div class="movie-review-item">
                 <div class="movie-review-content">
-                    <div class="review" id="stars">
-
+                    <div class="review" id="voting">
+                       
                     </div>
-                    <h6 class="cont-title" id="user"></h6>
-                    <p id="content"></p>
+                    <h6 class="cont-title" id="user">Awesome Movie</h6>
+                    <p id="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer volutpat enim non ante egestas vehicula. Suspendisse potenti. Fusce malesuada fringilla lectus venenatis porttitor. </p>
+
                 </div>
             </div>
             `)
 
             item.find('#user').text(comment.username)
             item.find('#content').text(comment.comment)
-            item.find('#stars').html((`<i class="flaticon-favorite-heart-button"></i>`).repeat(comment.ratedStarts))
+            item.find('#voting').html((`<i class="flaticon-favorite-heart-button"></i>`).repeat(comment.rated_starts))
             
             container.append(item)
             

@@ -261,7 +261,8 @@ public class BookingServiceImpl implements BookingService {
 							paymentREPO.save(payment);
 						}
 					} catch (Exception e) {
-						continue;
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}	
 				}
 

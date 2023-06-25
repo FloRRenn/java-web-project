@@ -7,6 +7,7 @@ Xây dựng website quản lý bán vé xem phim với các tính năng chí
 Đây là repo tổng hợp lại từ 2 repo khác do chính nhóm em phát triển:
 - Back-end: https://github.com/FloRRenn/Java-Web/tree/backend
 - Front end: https://github.com/FloRRenn/Fe-java/
+<br/>
 
 # **3. Thành viên nhóm:**
 | Sinh Viên               | MSSV        | Github Username   |
@@ -68,9 +69,10 @@ docker-compose down
 ### **B. Thông tin đăng nhập:**
 | Username   | Password    | Role        |
 |:-----------|:-----------:|:-----------:|
-| florentino | 2OVnf3l3#h8 | Super Admin |
-| lalaforever| 2OVnf3l3#h8 | Admin       |
-| user_1	 | 3x2Vk7L4bk#5| User        |
+| super_admin.1234 | 3Mt^tmM85YUL | Super Admin |
+| admin.1234 | 3zP!6Z13SN^w" | Admin       |
+| user_1	 | k9G*Ni91r! | User        |
+| user_2	 | hS5f%1*8V1 | User        |
 
 ### **C. Thông tin thanh toán VNPAY:**
 - Ngân hàng:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`NCB`

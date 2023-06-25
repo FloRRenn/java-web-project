@@ -9,12 +9,12 @@ import org.bouncycastle.util.encoders.Base64;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
-// import java.security.SecureRandom;
+import java.security.SecureRandom;
 
 public class ChaCha20util {
     private static final int KEY_SIZE_BITS = 256; // ChaCha20 key size in bits
     private static final int KEY_DERIVATION_ITERATIONS = 10000; // PBKDF2 iterations
-    // private static final int SALT_SIZE_BYTES = 16; // Salt size in bytes
+    private static final int SALT_SIZE_BYTES = 16; // Salt size in bytes
 
     private byte[] key;
     private byte[] iv;
@@ -32,7 +32,7 @@ public class ChaCha20util {
             engine.init(true, parameters);
             
             JSONObject data = new JSONObject();
-            data.put("username", RandomStringGenerator.generate(10) + "&&" + plaintext + "&&" + RandomStringGenerator.generate(10));
+            data.put("message", RandomStringGenerator.generate(10) + "&&" + plaintext + "&&" + RandomStringGenerator.generate(10));
             data.put("expired", DateUtils.getDateAfter(2));
             
             byte[] input = data.toString().getBytes(StandardCharsets.UTF_8);
@@ -73,13 +73,14 @@ public class ChaCha20util {
         
         return new String(Base64.encode(output), StandardCharsets.UTF_8);
     }
+    
 
-    // private byte[] generateSalt() {
-    //     byte[] salt = new byte[SALT_SIZE_BYTES];
-    //     SecureRandom secureRandom = new SecureRandom();
-    //     secureRandom.nextBytes(salt);
-    //     return salt;
-    // }
+    private byte[] generateSalt() {
+        byte[] salt = new byte[SALT_SIZE_BYTES];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(salt);
+        return salt;
+    }
 
     private byte[] deriveKey(String password, byte[] salt) {
         PKCS5S2ParametersGenerator generator = new PKCS5S2ParametersGenerator();

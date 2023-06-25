@@ -16,25 +16,10 @@
       let path =  window.location.pathname.split("/").at(-1)
       $(`.menu > li > a[href="${path}"]`).addClass('active')
       $('.footer-section').html(`
-        <div class="newslater-section padding-bottom">
-            <div class="container">
-                <div class="newslater-container bg_img" data-background="./assets/images/newslater/newslater-bg01.jpg">
-                    <div class="newslater-wrapper">
-                        <h5 class="cate">Đăng kí PenguTicket </h5>
-                        <h3 class="title">để nhận về các thông tin khuyến mãi</h3>
-                        <form class="newslater-form">
-                            <input type="text" placeholder="Email của bạn">
-                            <button type="submit">ĐĂNG KÍ NGAY</button>
-                        </form>
-                        <p>Chúng tôi đảm bảo quyền riêng tư và bảo mật thông tin của bạn</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="footer-top">
                 <div class="logo">
-                    <a href="https://pixner.net/boleto/demo/index-1.html">
+                    <a href="/">
                         <img src="assets/images/footer/footer-logo.png" alt="footer">
                     </a>
                 </div>

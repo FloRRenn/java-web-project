@@ -102,9 +102,9 @@ public class CinemaShowServiceImpl implements CinemaShowService {
 		if (starttime == null)
 			throw new MyBadRequestException("Invaild date format, it must be dd/MM/yyyy HH:mm");
 		LocalDateTime endtime = starttime.plusMinutes(movie.getDurationInMins()).plusMinutes(10);
-		List<CinemaShow> conflictedShows = showREPO.findConflictingShows(starttime, endtime, hall.getId());
-		if (conflictedShows.size() != 0)
-			throw new MyConflictExecption("Conflict start/end time with show ID: " + conflictedShows.get(0).getId());
+		// List<CinemaShow> conflictedShows = showREPO.findConflictingShows(starttime, endtime, hall.getId());
+		// if (conflictedShows.size() != 0)
+		// 	throw new MyConflictExecption("Conflict start/end time with show ID: " + conflictedShows.get(0).getId());
 		
 		CinemaShow show = new CinemaShow(hall, movie, starttime, endtime);
 		CinemaShow saveShow = showREPO.save(show);

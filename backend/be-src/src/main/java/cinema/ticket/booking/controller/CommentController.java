@@ -59,27 +59,26 @@ public class CommentController {
 		return commentService.addComment(principal.getName(), req);
 	}
 	
-	/*@PostMapping("/addlist")
-	@Operation(
-			summary = "Add list comment Service (User is required)",
-			responses = {
-					@ApiResponse( responseCode = "200", description = "Add list comment successfully.",
-							content = @Content( mediaType = "application/json", schema = @Schema(implementation = CommentResponse.class))),
-					@ApiResponse( responseCode = "404", description = "User or Movie is not found.",
-							content = @Content( mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
-			},
-			parameters = {
-					@Parameter( name = "Authorication", in = ParameterIn.HEADER,
-							schema = @Schema(type = "string"), example = "Bearer <token>",
-							required = true
-					)
-			}	         
-	)
-	@PreAuthorize("hasRole('USER')")
-	public CommentResponse _addComment(Principal principal, @RequestBody @Valid List<AddCommentRequest> req) {
-		return commentService.addListComments(principal.getName(), req);
-	}
-	*/
+	// @PostMapping("/addlist")
+	// @Operation(
+	// 		summary = "Add list comment Service (User is required)",
+	// 		responses = {
+	// 				@ApiResponse( responseCode = "200", description = "Add list comment successfully.",
+	// 						content = @Content( mediaType = "application/json", schema = @Schema(implementation = CommentResponse.class))),
+	// 				@ApiResponse( responseCode = "404", description = "User or Movie is not found.",
+	// 						content = @Content( mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+	// 		},
+	// 		parameters = {
+	// 				@Parameter( name = "Authorication", in = ParameterIn.HEADER,
+	// 						schema = @Schema(type = "string"), example = "Bearer <token>",
+	// 						required = true
+	// 				)
+	// 		}	         
+	// )
+	// @PreAuthorize("hasRole('USER')")
+	// public CommentResponse _addComment(Principal principal, @RequestBody @Valid List<AddCommentRequest> req) {
+	// 	return commentService.addListComments(principal.getName(), req);
+	// }
 	
 	@GetMapping("/{comment_id}")
 	@Operation(

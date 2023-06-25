@@ -79,6 +79,9 @@ public class Movie{
 	
 	@Column(name = "image")
 	private String image;
+
+	@Column(name = "large_image")
+	private String large_image;
 	
 	@Column(name = "trailer")
 	private String trailer;
@@ -96,6 +99,7 @@ public class Movie{
 		this.releaseDate = req.getReleaseDate();
 		this.country = req.getCountry();
 		this.image = req.getImage();
+		this.large_image = req.getLargeImage();
 	}
 	
 	public String getTrailer() {
@@ -183,6 +187,14 @@ public class Movie{
 	
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getLargeImage() {
+		return this.large_image;
+	}
+	
+	public void setLargeImage(String image) {
+		this.large_image = image;
 	}
 	
 	public List<Comment> getComments() {

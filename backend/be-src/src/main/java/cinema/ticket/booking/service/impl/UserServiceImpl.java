@@ -32,8 +32,10 @@ import cinema.ticket.booking.response.EmailResponse;
 import cinema.ticket.booking.security.InputValidationFilter;
 import cinema.ticket.booking.service.EmailService;
 import cinema.ticket.booking.service.UserService;
-import cinema.ticket.booking.utils.ChaCha20util;
+import cinema.ticket.booking.utils.Base64util;
+// import cinema.ticket.booking.utils.ChaCha20util;
 import cinema.ticket.booking.utils.DateUtils;
+import cinema.ticket.booking.utils.RandomStringGenerator;
 import cinema.ticket.booking.utils.RegexExtractor;
 
 @Service
@@ -42,10 +44,10 @@ public class UserServiceImpl implements UserService {
 	@Value("${app.base_recover_pass_url}")
 	private String base_recover_pass_url;
 	
-	private String secretKey = "MyChaChaKeyIsSoBadBut060koldyXC17eWCwF3hPS4bNgMH3wDJ";	
-	private Long IV = 3473735834123L;
-	private String salt = "3a1f9b8c7d0e2f5a";
-	private ChaCha20util cipher = new ChaCha20util(secretKey, IV, salt);
+	// private String secretKey = "MyChaChaKeyIsSoBadBut060koldyXC17eWCwF3hPS4bNgMH3wDJ";	
+	// private Long IV = 3473735834123L;
+	// private String salt = "3a1f9b8c7d0e2f5a";
+	// private ChaCha20util cipher = new ChaCha20util(secretKey, IV, salt);
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -213,12 +215,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public MyApiResponse getURIforgetPassword(String username) throws Exception {
 		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-		String ciphertext = cipher.encrypt(username);
+		//String ciphertext = cipher.encrypt(email);
 
-		// JSONObject data = new JSONObject();
-		// data.put("username", username);
-		// data.put("expired", DateUtils.getDateAfter(2));
-		// String ciphertext = Base64util.encode5Times(data.toString());
+		JSONObject data = new JSONObject();
+		data.put("username", username);
+		data.put("expired", DateUtils.getDateAfter(2));
+		String ciphertext = Base64util.encode5Times(data.toString());
 
 		this.mailQueue.offer(new EmailResponse(user.getEmail(), 
 				"Movie-Project: Recover your email", 
@@ -229,8 +231,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private JSONObject checkToken(String code) {
-		String decryption =  cipher.decrypt(code);
-		// String decryption = Base64util.decode5Times(code);
+		// String decryption =  cipher.decrypt(code);
+		String decryption = Base64util.decode5Times(code);
 		if (decryption == null)
 			return null;
 		
@@ -262,8 +264,7 @@ public class UserServiceImpl implements UserService {
 		if (decryption == null)
 			throw new MyNotFoundException("URL Not Found");
 		
-		String data = (String)decryption.get("username");
-		String username = RegexExtractor.extract(data, "(?<=&&)[^&]+(?=&&)");
+		String username = (String)decryption.get("username");
 		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
 		if (!inputValidationSER.checkInput(password))
@@ -275,7 +276,7 @@ public class UserServiceImpl implements UserService {
 		return new MyApiResponse("Set new password");
 	}
 	
-	@Scheduled(fixedDelay = 500)
+	@Scheduled(fixedDelay = 5000)
 	public void sendRestCodeMail() {
 		while (this.mailQueue.size() != 0) {
 			EmailResponse data = this.mailQueue.poll();

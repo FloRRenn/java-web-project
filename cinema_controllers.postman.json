@@ -1,0 +1,1947 @@
+{
+	"info": {
+		"_postman_id": "b806d802-7d92-44cd-a0e8-359c7f2ce6d4",
+		"name": "Cinema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23895974"
+	},
+	"item": [
+		{
+			"name": "Auth Controller",
+			"item": [
+				{
+					"name": "Login (Everyone)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWhpIiwiaWF0IjoxNjgyOTQyOTYwLCJleHAiOjE2ODI5NDY1NjB9.aInkmc0zJXQ9UyLMkI-c6grA-MWVbeeSOnxvvaw8TWI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user_1\",\r\n    \"password\": \"3x2Vk7L4bk#5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoaWhpIiwiaWF0IjoxNjgyOTQyOTYwLCJleHAiOjE2ODI5NDY1NjB9.aInkmc0zJXQ9UyLMkI-c6grA-MWVbeeSOnxvvaw8TWI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"alo1234\",\r\n    \"password\": \"123saA2sad##\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/admin/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup (Everyone)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Forward-For",
+								"value": "1.2.3.423",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\" :  \"WD SID WDW\",\r\n    \"username\" : \"user_2\",\r\n    \"password\" : \"3x2Vk7L4bk#5\",\r\n    \"email\" : \"00an.an00@gmail.com\",\r\n    \"address\" : \"123/32 Nasd Aw\",\r\n    \"phone\" : \"012345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh token (Everyone)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\" : \"WiJ3wtdMlykixwlehzwyoPn6TeXTA5YoAnG42+vALALCeQ3JFZSU6pPEc9ZDt0Hp5WAgxKepZ+7CrnDkG9l0/s+FgmJg35sko3uHfb5yZdcVfEs1ljPSMVxa+Yf+3FuU3ZPcccVMsETS+fUrwCJ6+stN/iRdRHuZe6GmQ+GvYzYUWbS7OdXFiK8SeMXT48VozAYJOLIhza6NUEStusHi3+o7f3d+8KC9/am4NmwVpDe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set new password (User)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"2OVnf3l3#h8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/user/recovery?code=VjJ4b2MxTXlTa2hXYTJ4U1ltdEtjVmxzV21GamJFNVlZMGhhYUZaVVJsWlhWRTVoVkd4S1IySkVTbFZXTTBKRFdsWlZlRTVXUmxsaFJrSlRVbnByZWxaSE5YZGthekZHVGxoQ1ZGZEZOVXRaYlhoaFRteGtjMkZGZEd0V2JYaFpWRlprTkZOdFJuUlBXRUpZWWxSRk1GcEhNVTlrUmxwMVZtMTBVMDF1WjNoWFZ6VnpVekE1VWxCVU1EMD0=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"recovery"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "VjJ4b2MxTXlTa2hXYTJ4U1ltdEtjVmxzV21GamJFNVlZMGhhYUZaVVJsWlhWRTVoVkd4S1IySkVTbFZXTTBKRFdsWlZlRTVXUmxsaFJrSlRVbnByZWxaSE5YZGthekZHVGxoQ1ZGZEZOVXRaYlhoaFRteGtjMkZGZEd0V2JYaFpWRlprTkZOdFJuUlBXRUpZWWxSRk1GcEhNVTlrUmxwMVZtMTBVMDF1WjNoWFZ6VnpVekE1VWxCVU1EMD0="
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check recovery code (User)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9595/api/user/recovery?code=PiXynrNLMPKmMlYFUpmr9cvjq9cjhBGNUZ7+yvGViJRDht7vvEamI4BMLUgPxvJG5s53AW8MuHwqGh4VT8Xb/cJ8jUMwr+qClJC8dT3OiBtPQ7G9OX6TE4Q4XTw=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9595",
+							"path": [
+								"api",
+								"user",
+								"recovery"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "PiXynrNLMPKmMlYFUpmr9cvjq9cjhBGNUZ7+yvGViJRDht7vvEamI4BMLUgPxvJG5s53AW8MuHwqGh4VT8Xb/cJ8jUMwr+qClJC8dT3OiBtPQ7G9OX6TE4Q4XTw="
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify url (User)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/auth/verify/IRMdA11UTaYSyP8oBENWW3NlgvxFZJWs6lGKkLDyY8i87gGlXt",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify",
+								"IRMdA11UTaYSyP8oBENWW3NlgvxFZJWs6lGKkLDyY8i87gGlXt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get URL for forgeting password (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/forgotpassword?username=lalaforever",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"forgotpassword"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "lalaforever"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account Controller",
+			"item": [
+				{
+					"name": "Get Me (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjkxMjYyNCwiZXhwIjoxNjg2OTE2MjI0fQ.gkL-X8HPRe_V5MyeSjEV7yWnYkh8uxuTDfl9n9-8B-o",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2MDQ2NzYwLCJleHAiOjE2ODYwNTAzNjB9.1rzbPoembQoOUF88fQWSokWR_mR_zZpzv1g10M4cI5Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/search?username=f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2MDI2MDM0LCJleHAiOjE2ODYwMjk2MzR9.EvT1EdxOnwfY_3y4faBeQPre2FadYnIzYMgP2drcDzQ",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJhbGliYWJhUSIsImlhdCI6MTY4MzI1NTYxNywiZXhwIjoxNjgzMjU5MjE3fQ.4eM2Q8DedjA3W5xAULK-5FMa4A5FluKjeYtdqtzGalk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/delete?username=alo1234",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "alo1234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Use by Username (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/search?username=vA",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "vA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Give Role Admin To User (Super Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0MDAwNjYxLCJleHAiOjE2ODQwMDQyNjF9.6ZEDSSa07I-m3a6yJiVhfu1YMeEQD8mq54W2rPhIE7c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/giveadmin?username=alibaba",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"giveadmin"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "alibaba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Role Admin (Super Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0MDAwNjYxLCJleHAiOjE2ODQwMDQyNjF9.6ZEDSSa07I-m3a6yJiVhfu1YMeEQD8mq54W2rPhIE7c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/removeadmin?username=alibaba",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"removeadmin"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "alibaba"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hall Controller",
+			"item": [
+				{
+					"name": "Add new hall (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2MjEzNDI4LCJleHAiOjE2ODYyMTcwMjh9.fXAJNVFQi_lo9ZBqexjlyB5Wk5v5gMTGP7-JMwglcII",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"G\",\r\n    \"totalRow\" : 5,\r\n    \"totalCol\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hall/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Hall (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTExMTg2LCJleHAiOjE2ODQ5MTQ3ODZ9.OyFqd88e2i9rPMk_ecgyhkqBPV8LPNHAjyYtMQkqo8Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"GG\",\r\n    \"totalRow\" : 3,\r\n    \"totalCol\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hall/365c6f52-f616f940-8b5a4d14/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"365c6f52-f616f940-8b5a4d14",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get hall by ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg1MDcyODE5LCJleHAiOjE2ODUwNzY0MTl9.5W0zO5j0LXYm6eDlqpoWPudee7CBCYitppG5LR9FU30",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/hall/aece3df5-e4aad8e5-b7d2fc31",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"aece3df5-e4aad8e5-b7d2fc31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all halls (Admin)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzNDIzMiwiZXhwIjoxNjg2ODM3ODMyfQ.jyWnN94L6D2w7uE8WEDh8wPN5INF0hfYctFONjI6MEM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hall/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Hall (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2MjEzNDI4LCJleHAiOjE2ODYyMTcwMjh9.fXAJNVFQi_lo9ZBqexjlyB5Wk5v5gMTGP7-JMwglcII",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"GG\",\r\n    \"totalRow\" : 6,\r\n    \"totalCol\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hall/d6dfb8fb-2ea33dbf-04e0f25c/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"d6dfb8fb-2ea33dbf-04e0f25c",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Seats from Hall ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTExOTY1LCJleHAiOjE2ODQ5MTU1NjV9.LCZvkXRz7mvR68SvKYiDn5noBKxO0LnLBk7CD7jX4JE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/hall/9bb91bd6-ee9963c9-d16886a8/seat/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"9bb91bd6-ee9963c9-d16886a8",
+								"seat",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit A Seat In Hall From Hall ID (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTExOTY1LCJleHAiOjE2ODQ5MTU1NjV9.LCZvkXRz7mvR68SvKYiDn5noBKxO0LnLBk7CD7jX4JE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"row\" : 1,\r\n    \"col\" : 1,\r\n    \"status\" : \"available\",\r\n    \"type\" : \"premium\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/hall/9bb91bd6-ee9963c9-d16886a8/seat/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"hall",
+								"9bb91bd6-ee9963c9-d16886a8",
+								"seat",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre Controller",
+			"item": [
+				{
+					"name": "Get All Genres (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg1MTYwNDg3LCJleHAiOjE2ODUxNjQwODd9.UIBIZK0O5fjDrUclAm8qf5L6ISLA1Ax0ws2oM4n7bsY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/genre/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Genre By ID (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/genre/byname/test1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"byname",
+								"test1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Genre (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTE3ODY4LCJleHAiOjE2ODQ5MjE0Njh9.1aUczze-1pTjI8M-etk8WC7rgP_BjFFY3bhCTqXizeE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genre\": \"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/genre/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add List Genres (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMzU3MiwiZXhwIjoxNjg2ODM3MTcyfQ.eB3PeLphzlCo2XerNa9j5unfMPNEA3I4sSPzZN0354c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"genre\": \"science fiction\"\r\n    },\r\n    {\r\n        \"genre\": \"comedy\"\r\n    },\r\n    {\r\n        \"genre\": \"drama\"\r\n    },\r\n    {\r\n        \"genre\": \"romance\"\r\n    },\r\n    {\r\n        \"genre\": \"animation\"\r\n    },\r\n    {\r\n        \"genre\": \"family\"\r\n    },\r\n    {\r\n        \"genre\": \"horror\"\r\n    },\r\n    {\r\n        \"genre\": \"action\"\r\n    },\r\n    {\r\n        \"genre\": \"war\"\r\n    },\r\n    {\r\n        \"genre\": \"adventure\"\r\n    },\r\n    {\r\n        \"genre\": \"fantasy\"\r\n    },\r\n    {\r\n        \"genre\": \"mystery\"\r\n    },\r\n    {\r\n        \"genre\": \"crime\"\r\n    },\r\n    {\r\n        \"genre\": \"history\"\r\n    },\r\n    {\r\n        \"genre\": \"thriller\"\r\n    },\r\n    {\r\n        \"genre\": \"music\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/genre/addlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"addlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Genre From ID (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTE3ODY4LCJleHAiOjE2ODQ5MjE0Njh9.1aUczze-1pTjI8M-etk8WC7rgP_BjFFY3bhCTqXizeE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"genre\" : \"Test3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/genre/1/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie Controller",
+			"item": [
+				{
+					"name": "Add A Movie (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg1MTY0MzM4LCJleHAiOjE2ODUxNjc5Mzh9.B2c10hjc8eVpDHm1oJhoheHoGFQSAAV-9TJy6dJRM3Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736293549346856/129aeeb6-6ae6-4b4b-b4e1-5f38dd1e9bc6.png\",\r\n    \"title\": \"Movie Test\",\r\n    \"description\": \"Movie Test\",\r\n    \"genres\": [\r\n        {\r\n            \"genre\": \"comedy\"\r\n        },\r\n        {\r\n            \"genre\": \"adventure\"\r\n        },\r\n        {\r\n            \"genre\": \"science fiction\"\r\n        }\r\n    ],\r\n    \"actors\": \"Movie Test, Movie Test, Movie Test, Movie Test\",\r\n    \"durationInMins\": 149,\r\n    \"releaseDate\": \"03/05/2023\",\r\n    \"country\": \"US\",\r\n    \"language\": \"VN\",\r\n    \"trailer\": \"https://www.youtube.com/watch?v=u3V5KDHRQvk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/movie/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add List of Movies (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMzU3MiwiZXhwIjoxNjg2ODM3MTcyfQ.eB3PeLphzlCo2XerNa9j5unfMPNEA3I4sSPzZN0354c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736293549346856/129aeeb6-6ae6-4b4b-b4e1-5f38dd1e9bc6.png\",\r\n        \"title\": \"Vệ Binh Dải Ngân Hà 3\",\r\n        \"description\": \"Cho dù vũ trụ này có bao la đến đâu, các Vệ Binh của chúng ta cũng không thể trốn chạy mãi mãi.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Chris Pratt, Zoe Saldana, Dave Bautista, Karen Gillan, Pom Klementieff\",\r\n        \"durationInMins\": 149,\r\n        \"releaseDate\": \"03/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=u3V5KDHRQvk\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736308749508658/tFMjE2A.png\",\r\n        \"title\": \"Con Nhót Mót Chồng\",\r\n        \"description\": \"Lấy cảm hứng từ web drama Chuyện Xóm Tui, phiên bản điện ảnh sẽ mang một màu sắc hoàn toàn khác: hài hước hơn, gần gũi và nhiều cảm xúc hơn Bộ phim là câu chuyện của Nhót - người phụ nữ “chưa kịp già” đã sắp bị mãn kinh, vội vàng đi tìm chồng. Nhưng sâu thẳm trong cô, là khao khát muốn có một đứa con và luôn muốn hàn gắn với người cha suốt ngày say xỉn của mình.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"drama\"\r\n            }\r\n        ],\r\n        \"actors\": \"Thái Hoà, Thu Trang\",\r\n        \"durationInMins\": 112,\r\n        \"releaseDate\": \"28/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=Zu2z-SY3hCk\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736407181426698/co-be-cuu-hoa.png\",\r\n        \"title\": \"Tình Người Duyên Ma: Ngoại Truyện\",\r\n        \"description\": \"Dựa trên truyền thuyết về nàng Nak, không xuất hiện trong lịch sử - Tid Noi là câu chuyện khai thác về một nhân vật mới trong mối quan hệ giữa Pee Mak và Mae Nak. Khác với suy đoán về một chuyện tình tay ba ngang trái, Tid Noi đơn thuần là anh bạn hàng xóm mang trong mình tình yêu đơn phương thuần khiết dành cho cô gái nhà bên là Nak.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"romance\"\r\n            }\r\n        ],\r\n        \"actors\": \"Pachrapa Chaichua, Pongsak Pongsuwan, Ananda Everingham, Rusameekae Fagerlund, Napapa Thantrakul\",\r\n        \"durationInMins\": 104,\r\n        \"releaseDate\": \"05/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=6oztXW8xqHk\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736488135696424/kisagari_poster.png\",\r\n        \"title\": \"Cô Bé Cứu Hỏa\",\r\n        \"description\": \"Cô Bé Cứu Hoả (tên tiếng Anh: Fireheart) đưa người xem bước vào hành trình phiêu lưu kỳ thú của Georgia Nolan - một cô bé thông minh, nhiệt huyết với ước mơ trở thành lính cứu hoả như ba mình. Tuy nhiên, năm 1932 tại New York, phụ nữ không được phép làm công việc này. Nhưng cơ hội “vàng” đã đến khi Georgia nảy ra ý định cải trang thành Joe - một chàng trai vụng về gia nhập đội cứu hoả do chính ba mình thành lập. Vừa phải bảo vệ danh tính thật, vừa phải dấn thân vào phi vụ mạo hiểm: Giải cứu những người lính cứu hoả của thành phố đã lần lượt biến mất trong ngọn lửa bí ẩn thiêu rụi Nhà hát Broadway, liệu Georgia có dũng cảm vượt qua tất cả và thành công?\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"family\"\r\n            }\r\n        ],\r\n        \"actors\": \"Olivia Cooke, Kenneth Branagh, William Shatner, Laurie Holden, Kevin Dennis\",\r\n        \"durationInMins\": 92,\r\n        \"releaseDate\": \"12/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=3suZMzK8Uu4\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736488135696424/kisagari_poster.png\",\r\n        \"title\": \"Trạm Tàu Ma\",\r\n        \"description\": \"Lời đồn ma ám về nhà ga Oksu ngày càng nhiều khi những vụ án kinh hoàng liên tục xảy ra. Một đường ray cũ kỹ, một chiếc giếng bỏ hoang, những con số gây ám ảnh hay những vết thương kỳ dị trên thi thể người xấu số... Tất cả dẫn đến một bí mật đau lòng bị chôn vùi nhiều năm trước.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"horror\"\r\n            }\r\n        ],\r\n        \"actors\": \"Kim Bo-ra, Kim Jae-hyun, Shin So-yul\",\r\n        \"durationInMins\": 80,\r\n        \"releaseDate\": \"28/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=gHeWP9R6-eU\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736559338192896/meo-vie-ao-tag.png\",\r\n        \"title\": \"Mèo Siêu Quậy Ở Viện Bảo Tàng\",\r\n        \"description\": \"Review Mèo Siêu Quậy Ở Viện Bảo Tàng và lịch chiếu Mèo Siêu Quậy Ở Viện Bảo Tàng tại Moveek\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            }\r\n        ],\r\n        \"actors\": \"Vasiliy Rovenskiy\",\r\n        \"durationInMins\": 80,\r\n        \"releaseDate\": \"28/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=8luiie842wA\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106239014870204547/poster_payoff_khe_uoc_12.png\",\r\n        \"title\": \"Khế Ước\",\r\n        \"description\": \"Trong nhiệm vụ cuối cùng ở Afghanistan, Trung sĩ John Kinley cùng đội với phiên dịch viên bản địa Ahmed. Khi đơn vị của họ bị phục kích, Kinley và Ahmed là 2 người sống sót duy nhất. Bị kẻ địch truy đuổi, Ahmed liều mạng đưa Kinley đang bị thương băng qua nhiều dặm đường địa hình khắc nghiệt đến nơi an toàn. Trở về Mỹ, Kinley biết rằng Ahmed và gia đình không dc cấp giấy thông hành tới Mỹ như đã hứa. Quyết tâm bảo vệ bạn mình và đền ơn cứu mạng, Kinley trở lại chiến trường để giúp Ahmed và gia đình trước khi lực lượng phiến quân phát hiện ra họ.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"drama\"\r\n            },\r\n            {\r\n                \"genre\": \"war\"\r\n            }\r\n        ],\r\n        \"actors\": \"Jake Gyllenhaal, Dar Salim, Antony Starr, Alexander Ludwig, Emily Beecham\",\r\n        \"durationInMins\": 123,\r\n        \"releaseDate\": \"21/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=02PPMPArNEQ\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736697163026512/dau-gau-gap-dau-dat.png\",\r\n        \"title\": \"Đầu Gấu Đụng Đầu Đất\",\r\n        \"description\": \"Phim theo chân Woong-nam (Park Sung Woong thủ vai), chàng “đầu đất” với năng lực bẩm sinh siêu phàm tựa như loài gấu, bất đắc dĩ phải đối đầu với một tổ chức tội phạm quốc tế.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"action\"\r\n            }\r\n        ],\r\n        \"actors\": \"Park Sung-woong, Lee Yi-kyung, Yeom Hye-ran, Oh Dal-Su, Choi Min-soo\",\r\n        \"durationInMins\": 98,\r\n        \"releaseDate\": \"21/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=nPSGk6ZInrg\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736771150549103/700x1000___2.png\",\r\n        \"title\": \"Ngục Tối Và Rồng: Danh Dự Của Kẻ Trộm\",\r\n        \"description\": \"Phim theo chân một tên trộm quyến rũ và một nhóm những kẻ bịp bợm nghiệp dư thực hiện vụ trộm sử thi nhằm lấy lại một di vật đã mất. Nhưng mọi thứ trở nên nguy hiểm khó lường hơn bao giờ hết  khi họ đã chạm trán nhầm người trong.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"fantasy\"\r\n            }\r\n        ],\r\n        \"actors\": \"John Francis Daley, Jonathan M. Goldstein\",\r\n        \"durationInMins\": 134,\r\n        \"releaseDate\": \"21/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=IiMinixSXII\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736836598485082/1200wx1800h-1-1680765880-poster.png\",\r\n        \"title\": \"Anh Em Super Mario\",\r\n        \"description\": \"Cuộc phiêu lưu đến Vương quốc Nấm của anh chàng thợ sửa ống nước Mario và quá trình anh vươn lên trở thành một huyền thoại. Xem lịch chiếu, review phim và mua vé xem phim dễ dàng hơn tại Moveek\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"family\"\r\n            },\r\n            {\r\n                \"genre\": \"fantasy\"\r\n            }\r\n        ],\r\n        \"actors\": \"Chris Pratt, Anya Taylor-Joy, Charlie Day, Jack Black, Keegan-Michael Key\",\r\n        \"durationInMins\": 93,\r\n        \"releaseDate\": \"07/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=TnGl01FkMMo\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736900960079973/Am-Vuc-Chet-Sound-of-Silence-2023-poster.png\",\r\n        \"title\": \"Âm Vực Chết\",\r\n        \"description\": \"Sau cái chết của cha, Emma (Penelope Sangiorgi) vội vã bay từ New York về quê nhà ở Ý để lo hậu sự. Trong thời gian diễn ra tang lễ, Emma ở một mình trong căn nhà mà cha mẹ để lại. Lúc này, cô bị buộc phải đối mặt với một thực thể tà ác có khả năng kết nối thông qua một chiếc radio bị nguyền rủa. Để sống sót và bảo vệ những người mình yêu thương, Emma phải tìm ra bí mật đen tối ẩn sau chiếc radio ma quỷ kia…\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"thriller\"\r\n            },\r\n            {\r\n                \"genre\": \"horror\"\r\n            }\r\n        ],\r\n        \"actors\": \"Penelope Sangiorgi, Rocco Marazzita, Lucia Caporaso, Daniele De Martino, Chiara Casolari\",\r\n        \"durationInMins\": 93,\r\n        \"releaseDate\": \"21/04/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=239gO3anEwE\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736973521534996/con-thinh-no-tu-coi-am-1094250.png\",\r\n        \"title\": \"Cơn Thịnh Nộ Từ Cõi Âm\",\r\n        \"description\": \"Câu chuyện bắt đầu khi Elly được gia đình của một người bạn nhờ chăm sóc một người phụ nữ lớn tuổi sống trong một căn nhà gỗ hẻo lánh trong vài ngày. Nhận lời đồng ý, nhưng sau đó Elly phát hiện ra sự xuất hiện của một con quỷ đang ẩn náu trong người phụ nữ chỉ chực chờ để thoát ra. Cùng lúc đó, những bí ẩn về cái chết của mẹ cô dần dần được gợi mở bởi những cơn ác mộng mà Elly phải trải qua.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"horror\"\r\n            }\r\n        ],\r\n        \"actors\": \"Sarah Grey, Meg Foster, Sarah Dumont, Alexis Knapp, Mena Suvari\",\r\n        \"durationInMins\": 96,\r\n        \"releaseDate\": \"12/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=Ry2lqIHcURY\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105737028894736445/sisu.png\",\r\n        \"title\": \"Sisu: Già Gân Báo Thù\",\r\n        \"description\": \"Khi một cựu quân nhân phát hiện ra vàng ở vùng hoang dã Lapland cố gắng mang chiến lợi phẩm vào thành phố, những người lính Đức Quốc xã do một sĩ quan SS tàn bạo chỉ huy đã chiến đấu với anh ta.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"war\"\r\n            }\r\n        ],\r\n        \"actors\": \"Jorma Tommila, Aksel Hennie, Jack Doolan, Onni Tommila, Mimosa Willamo\",\r\n        \"durationInMins\": 91,\r\n        \"releaseDate\": \"12/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=2NnPzpuU5ao\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105737099354853407/nhung-ke-thao-tung.png\",\r\n        \"title\": \"Những Kẻ Thao Túng\",\r\n        \"description\": \"Phim theo chân thám tử Daniel Rourke (Ben Affleck) trong hành trình tìm kiếm cô con gái bị mất tích. Anh sớm nhận ra tất cả những chuyện bí ẩn này đều liên quan đến một người đàn ông có sức mạnh thôi miên. Với sự hỗ trợ từ nhà ngoại cảm Diana Cruz (Alice Braga), Daniel bắt đầu truy đuổi hắn và phải tìm mọi cách để đưa con gái mình trở về nhà an toàn.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"mystery\"\r\n            },\r\n            {\r\n                \"genre\": \"thriller\"\r\n            },\r\n            {\r\n                \"genre\": \"crime\"\r\n            }\r\n        ],\r\n        \"actors\": \"Ben Affleck, Alice Braga, William Fichtner, J. D. Pardo, Jeff Fahey\",\r\n        \"durationInMins\": 93,\r\n        \"releaseDate\": \"12/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=eHsWYmnXk1o\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106238898151096371/74d035165134327.png\",\r\n        \"title\": \"Fast & Furious 10\",\r\n        \"description\": \"Dom (Vin Disel) và nhóm của anh đã tiêu diệt trùm ma túy người Brazil Hernan Reyes ở Rio De Janeiro. Điều họ không biết là con trai của Reyes, Dante (Jason Momoa) đã chứng kiến tất cả và dành 12 năm để lên kế hoạch báo thù hoàn hảo sẽ khiến gia đình Dom phải trả giá đắt. \",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"thriller\"\r\n            },\r\n            {\r\n                \"genre\": \"crime\"\r\n            }\r\n        ],\r\n        \"actors\": \"Vin Diesel, Michelle Rodriguez, Tyrese Gibson, Ludacris, Jason Momoa\",\r\n        \"durationInMins\": 130,\r\n        \"releaseDate\": \"17/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=aOb15GVFZxU\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105737244410646528/nang-tien-ca-2-1679082319495.png\",\r\n        \"title\": \"Nàng Tiên Cá\",\r\n        \"description\": \"Nàng Tiên Cá là câu chuyện được yêu thích về Ariel - một nàng tiên cá trẻ xinh đẹp và mạnh mẽ với khát khao phiêu lưu. Ariel là con gái út của Vua Triton và cũng là người ngang ngạnh nhất, nàng khao khát khám phá về thế giới bên kia đại dương. Trong một lần ghé thăm đất liền, nàng đã phải lòng Hoàng tử Eric bảnh bao. Trong khi tiên cá bị cấm tiếp xúc với con người, Ariel đã làm theo trái tim mình. Nàng đã thỏa thuận với phù thủy biển Ursula hung ác để cơ hội sống cuộc sống trên đất liền. Nhưng cuối cùng việc này lại đe dọa tới mạng sống của Ariel và vương miện của cha nàng.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"romance\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"family\"\r\n            },\r\n            {\r\n                \"genre\": \"fantasy\"\r\n            }\r\n        ],\r\n        \"actors\": \"Halle Bailey, Jonah Hauer-King, Daveed Diggs, Awkwafina, Jacob Tremblay\",\r\n        \"durationInMins\": 135,\r\n        \"releaseDate\": \"26/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=kpGo2_d3oYE\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106238634660728943/main_poster_-_dmmovie2023.png\",\r\n        \"title\": \"Doraemon: Nobita Và Vùng Đất Lý Tưởng Trên Bầu Trời\",\r\n        \"description\": \"Phần phim mới nhất xoay quanh chuyến phiêu lưu của Doraemon, Nobita và những người bạn thân tới Paradapia - một hòn đảo hình trăng lưỡi liềm lơ lửng trên bầu trời. Ở nơi đó, tất cả đều hoàn hảo… đến mức cậu nhóc Nobita mê ngủ ngày cũng có thể trở thành một thần đồng toán học, một siêu sao thể thao. Cả hội Doraemon cùng sử dụng một món bảo bối độc đáo chưa từng xuất hiện trước đây để đến với vương quốc tuyệt vời này. Cùng với những người bạn ở đây, đặc biệt là chàng robot mèo Sonya, cả hội đã có chuyến hành trình tới vương quốc trên mây tuyệt vời… cho đến khi những bí mật đằng sau vùng đất lý tưởng này được hé lộ.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Wasabi Mizuta, Megumi Oohara, Yumi Kakazu, Subaru Kimura, Tomokazu Seki\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"26/05/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=jyCSIPhNJGw\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106239406718844968/SpidermanPOSTER-011.png\",\r\n        \"title\": \"Người Nhện: Du Hành Vũ Trụ Nhện\",\r\n        \"description\": \"Vô số Spider-Man từ khắp các vũ trụ đang đối đầu nhau?!\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Shameik Moore\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"01/06/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=shW9i6k8cB0\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106238526716125314/tf7_700x1000.png\",\r\n        \"title\": \"Transformers: Quái Thú Trỗi Dậy\",\r\n        \"description\": \"Một cuộc chiến với quy mô hoành tráng, những trận chiến căng thẳng, những cơn mưa lửa đạn tràn ngập giữa hàng loạt các robot ngang tài ngang sức dần được tiết lộ ở những khung hình cuối của đoạn trailer. Thế nhưng liệu sự kết hợp ăn ý giữa Autobots và Maximals liệu có đủ để chống lại cả một đội quân đông đảo của Scourge hay không, liệu có Transformer nào sẽ phải hy sinh ở cuộc chiến này? Hay phải chăng sẽ còn cách nào khác để cứu Trái Đất như lời Elena hé lộ?\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Anthony Ramos, Dominique Fishback, Tobe Nwigwe, Peter Cullen, Ron Perlman\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"09/06/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=itnqEauWQZM\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106239864397103224/the-flash-movie-poster-ezra-miller-barry-allen.png\",\r\n        \"title\": \"Flash\",\r\n        \"description\": \"Bối cảnh phim có thể sẽ được lấy từ sự kiện Flashpoint. Trong nguyên tác truyện tranh, anh chàng Barry Allen sẽ quay ngược thời gian để cứu người mẹ khỏi cái chết. Chuyến đi này của anh đã làm thay đổi nhiều sự kiện trong quá khứ và từ đó kéo theo một loạt rắc rối.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"fantasy\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Ezra Miller, Kiersey Clemons, Billy Crudup, Johnny Depp\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"16/06/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=hebWYacbdvc\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106239984714907741/Vu-Em-Day-Yeu-No-Hard-Feelings-2023-poster.png\",\r\n        \"title\": \"Vú Em Dạy “Yêu”\",\r\n        \"description\": \"ội dung phim kể về một cô gái lẳng lơ, sống nay đây mai đó với đủ loại công việc. Cho đến một ngày, cô nhận lời của một cặp vợ chồng trung niên là quyến rũ cậu con trai 19 tuổi của họ. Cũng từ đây, hành trình của bà cô U40 đi cò cưa trai trẻ bắt đầu với bao tình huống éo le, khó đỡ.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"romance\"\r\n            }\r\n        ],\r\n        \"actors\": \"Jennifer Lawrence, Andrew Barth Feldman, Laura Benanti, Matthew Broderick, Ebon Moss-Bachrach\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"23/06/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=P15S6ND8kbQ\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240080680587324/indiana-jones-vong-quay-dinh-menh-thumb.png\",\r\n        \"title\": \"Indiana Jones & Vòng Quay Định Mệnh\",\r\n        \"description\": \"Tác phẩm là phần thứ năm trong loạt phim Indiana Jones, tiếp nối câu chuyện sau Indiana Jones and the Kingdom of the Crystal Skull (2008). Với những câu chuyện phiêu lưu kỳ thú, Indiana Jones (Harrison Ford) là một trong những anh hùng huyền thoại của các khán giả thế hệ 7x và 8x. Indiana Jones 5 sẽ pha trộn giữa thực tế, hư cấu. Lần này Indiana Jones sẽ đối mặt với Đức quốc xã trong thời gian diễn ra cuộc chạy đua vào không gian như thế nào? Bộ phim hứa hẹn sẽ là một chuyến hành trình cuối cùng đáng nhớ của Indiana Jones và là lời chào tạm biệt tốt nhất dành cho nhân vật này trên màn ảnh.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            }\r\n        ],\r\n        \"actors\": \"Harrison Ford\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"30/06/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=eQfMbSe7F2g\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240371983392918/quyquyetcuadoPOSTER-01.png\",\r\n        \"title\": \"Quỷ Quyệt Cửa Đỏ Vô Định\",\r\n        \"description\": \"Đã 10 năm trôi qua kể từ màn đối đầu quỷ dữ theo đúng nghĩa đen diễn ra ở Insidious 2, sang chấn từ sự việc vẫn âm ỉ, nhất là đối với Josh và con trai lớn Dalton của anh. Vì cả hai đã chọn quên đi quá khứ cũng như đè nén khả năng đặc biệt của bản thân, giờ trong tâm trí họ tồn tại một khoảng trống khiến hai cha con luôn cảm thấy bản thân như đang bị chìm trong sương mù và cơn ác mộng dai dẳng về cánh cửa đỏ họ không thể nhớ đã gặp ở đâu. Và hôm nay, khi Dalton chuẩn bị lên đường học đại học, những con quỷ quay về để hoàn thành chuyện còn dang dở năm nào. Tệ hơn, giờ hai cha con không có Elise hỗ trợ nữa.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"thriller\"\r\n            },\r\n            {\r\n                \"genre\": \"horror\"\r\n            }\r\n        ],\r\n        \"actors\": \"Ty Simpkins, Patrick Wilson, Hiam Abbass, Sinclair Daniel, Andrew Astor\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"07/07/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=ZuQuOnYnr3Q\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240470784413776/o1YxyJFVbQvqwfWnf6aVyjcUhcZ.png\",\r\n        \"title\": \"Barbie\",\r\n        \"description\": \"Lấy bối cảnh tại 'Barbieland' một xã hội tươi đẹp, đầy màu sắc với Kens và Barbies. Ken của Ryan Gosling, được cho là một 'thằng cực kỳ ngu ngốc', rất mê Barbie, nhưng lại yêu thế giới thực, nơi mà có tất cả các lý do mà Barbie ghét (tiêu chuẩn về vẻ đẹp, giới tính,... ). Ken và Barbie rời 'Barbieland' để đến thế giới thực và CEO Mattel (Will Ferrell) phải đuổi theo để đưa họ trở lại Barbieland.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            }\r\n        ],\r\n        \"actors\": \"Margot Robbie\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"21/07/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=GRyt3Ov4zz0\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240615706005587/oppenheimer-poster-1658411601593.png\",\r\n        \"title\": \"Oppenheimer\",\r\n        \"description\": \"Bộ phim dựa trên cuốn sách giành giải Pulitzer năm 2005 tên American Prometheus: The Triumph and Tragedy of J. Robert Oppenheimer của hai tác giả Kai Bird và Martin J. Sherwin. Tác phẩm đã khắc họa chân dung nhà vật lý lý thuyết người Mỹ J. Robert Oppenheimer và vai trò của ông trong quá trình phát triển bom nguyên tử.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"drama\"\r\n            },\r\n            {\r\n                \"genre\": \"history\"\r\n            },\r\n            {\r\n                \"genre\": \"war\"\r\n            }\r\n        ],\r\n        \"actors\": \"Cillian Murphy, Emily Blunt, Florence Pugh, Matt Damon, Dane DeHaan\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"21/07/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=bK6ldnjE3Y0\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240703450861730/conantausatdenPOSTER-01.png\",\r\n        \"title\": \"Thám Tử Lừng Danh Conan: Tàu Ngầm Sắt Màu Đen\",\r\n        \"description\": \"Lấy bối cảnh ở vùng biển gần đảo Hachijo-jima, Tokyo. Các kỹ sư khắp nơi trên thế giới đã tập hợp lại để vận hành toàn diện 'Phao Thái Bình Dương' - một cơ sở ngoài khơi để kết nối các camera an ninh thuộc sở hữu của lực lượng cảnh sát toàn cầu. Một thử nghiệm về một 'công nghệ mới' nhất định dựa trên hệ thống nhận dạng khuôn mặt đang được tiến hành ở đó.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"mystery\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"crime\"\r\n            }\r\n        ],\r\n        \"actors\": \"Minami Takayama, Wakana Yamazaki, Rikiya Koyama, Megumi Hayashibara, Shuuichi Ikeda\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"21/07/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=UKoz2Xh3ojc\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240872040910939/rsz_haunted_mansion_teaser_poster.png\",\r\n        \"title\": \"\",\r\n        \"description\": \"Không một sinh vật sống nào có thể liên tục chỉ tồn tại trong thế giới thực mà không hóa điên. Ngay cả chim sơn ca và châu chấu cũng được một số người cho là có biết mơ. Dinh thự Hill thì chẳng còn tỉnh táo nữa. Nó đứng một mình trên những ngọn đồi, lưu giữ bóng tối trong lòng. Nó đã đứng như vậy trong suốt tám mươi năm và có thể sẽ tiếp tục đứng vững thêm tám mươi năm nữa.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"family\"\r\n            },\r\n            {\r\n                \"genre\": \"horror\"\r\n            }\r\n        ],\r\n        \"actors\": \"Rosario Dawson, Chase W. Dillon, LaKeith Stanfield, Tiffany Haddish, Owen Wilson\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"28/07/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=gartMjonTXc\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106240970170826752/fjej3p5vsaefncy-1670085354902.png\",\r\n        \"title\": \"Blue Beetle\",\r\n        \"description\": \"Câu chuyện về nguồn gốc của Jaime Reyes trong nguyên tác khá đơn giản và dễ hiểu. Reyes là một cậu thiếu niên sống cùng gia đình, bao gồm cha mẹ và em gái, tại El Paso, Texas, Mỹ. Trong một ngày trên đường đi học về, cậu tình cờ nhặt được một vật thể kỳ lạ có hình giống một con bọ hung. Và tính tò mò đã khiến Reyes quyết định mang nó về nhà, mà không hề biết rằng điều này sẽ thay đổi cuộc sống và tương lai cậu mãi mãi.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"thriller\"\r\n            }\r\n        ],\r\n        \"actors\": \"George Lopez\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"18/08/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=vS3_72Gb-bI\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106241024726151168/thienacdoidau-01.png\",\r\n        \"title\": \"Thiện Ác Đối Đầu 3\",\r\n        \"description\": \"Sau khi phải tự tay tiêu diệt những người đồng đội cũ trong The Equalizer 2 (2018), Robert McCall (Denzel Washington) quyết định nghỉ hưu thực sự và chuyển đến sinh sống tại miền Nam nước Ý. Tại đây, ông dường như đã tìm thấy một quê nhà mới với cuộc sống bình yên bên cạnh những người dân hiếu khách. Thế nhưng, mỗi khi McCall muốn thoát khỏi quá khứ bạo lực thì rắc rối lại tự tìm đến ông. Một tổ chức mafia bắt đầu vươn vòi bạch tuộc với vùng quê này với hàng loạt các hoạt động phi pháp, giết người và thậm chí là khủng bố cảnh sát. Khi tính mạng của bạn bè bị đe dọa, Robert McCall buộc phải tái xuất để xóa số băng đảng tội phạm này mãi mãi.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"thriller\"\r\n            },\r\n            {\r\n                \"genre\": \"crime\"\r\n            }\r\n        ],\r\n        \"actors\": \"Denzel Washington, Dakota Fanning, Gaia Scodellaro, David Denman, Eugenio Mastrandrea\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"01/09/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=19ikl8vy4zs\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106241116640120973/An-Mang-O-Venice-Haunting-in-Venice-2023-poster.png\",\r\n        \"title\": \"Án Mạng Ở Venice\",\r\n        \"description\": \"Án Mạng Ở Venice được lấy cảm hứng từ cuốn tiểu thuyết Hallowe’en Party năm 1969 của Agatha Christie, nhưng vẫn chưa rõ nó sẽ bám sát nguyên tác đến mức nào. Nội dung được tóm gọn như sau: “Bây giờ đã nghỉ hưu và sống lưu vong tự áp đặt tại thành phố quyến rũ nhất thế giới, [Hercule] Poirot miễn cưỡng tham dự một buổi cầu hồn tại một cung điện bị ma ám, mục nát. Khi một trong những vị khách bị sát hại, viên thám tử bị đẩy vào một thế giới nham hiểm của bóng tối và bí mật.”\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"drama\"\r\n            },\r\n            {\r\n                \"genre\": \"mystery\"\r\n            },\r\n            {\r\n                \"genre\": \"crime\"\r\n            }\r\n        ],\r\n        \"actors\": \"Kenneth Branagh, Michelle Yeoh, Jamie Dornan, Tina Fey, Jude Hill\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"15/09/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=oRCKIP5paEU\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106241194754854953/Dune-2-Poster.png\",\r\n        \"title\": \"Dune 2\",\r\n        \"description\": \"Dune chuyển thể từ tiểu thuyết nổi tiếng cùng tên của nhà văn Frank Herbert, xuất bản tại Việt Nam với tựa đề Xứ cát. Kịch bản theo chân công tước Paul Atreides (Timothée Chalamet đóng) trong hành trình sinh tử bảo vệ vận mệnh của cả thiên hà\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"action\"\r\n            },\r\n            {\r\n                \"genre\": \"adventure\"\r\n            },\r\n            {\r\n                \"genre\": \"science fiction\"\r\n            }\r\n        ],\r\n        \"actors\": \"Timothee Chalamet, Zendaya, Rebecca Ferguson, Javier Bardem, Florence Pugh\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"03/11/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=Way9Dexny3w\"\r\n    },\r\n    {\r\n        \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1106241367170105374/rZGFcl01VIdfMpLOIuiO6IFdq1U.png\",\r\n        \"title\": \"Quỷ Lùn Tinh Nghịch: Đồng Tâm Hiệp Nhạc\",\r\n        \"description\": \"Bộ phim mở ra cuộc hành trình phiêu lưu âm nhạc kỳ thú của bộ đôi Poppy và Branch. Sau 2 phần phim từng chiếu trước đây, trải qua những chuyến phiêu lưu cùng với nhau, Poppy và Brand đã chính thức ở bên nhau như một cặp đôi. Mở đầu trailer là khung cảnh của buổi tiệc cưới hoàng gia đang được chuẩn bị. Tụ hội trong ngày vui của vợ chồng Bridget và Gristle là anh Mây cầu vồng và Tí Kim Cương lấp lánh. Ngoài ra, còn có John Dory, anh trai thất lạc của Branch. Sự xuất hiện của John Dory tại bữa tiệc đã hé lộ những bí mật được che giấu lâu nay.\",\r\n        \"genres\": [\r\n            {\r\n                \"genre\": \"comedy\"\r\n            },\r\n            {\r\n                \"genre\": \"animation\"\r\n            },\r\n            {\r\n                \"genre\": \"family\"\r\n            },\r\n            {\r\n                \"genre\": \"fantasy\"\r\n            },\r\n            {\r\n                \"genre\": \"music\"\r\n            }\r\n        ],\r\n        \"actors\": \"Anna Kendrick, Justin Timberlake, Eric André, Kid Cudi, Daveed Diggs\",\r\n        \"durationInMins\": 120,\r\n        \"releaseDate\": \"17/11/2023\",\r\n        \"country\": \"US\",\r\n        \"language\": \"VN\",\r\n        \"trailer\": \"https://www.youtube.com/watch?v=qZ40Z62tcXM\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/movie/addlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"addlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Movies (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/movie/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie By Id (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/movie/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Movie By Title (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/movie/searchbytitle?key=g",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"searchbytitle"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Movie By Genre (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/movie/searchbygenre?key=y",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"searchbygenre"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "y"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg1MTY0ODc1LCJleHAiOjE2ODUxNjg0NzV9.4uI0jLMY9E9jWO4vHh72C9M-i32a1JT79KENxbOCeLA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/movie/33/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"33",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Movie (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg1MTY0MzM4LCJleHAiOjE2ODUxNjc5Mzh9.B2c10hjc8eVpDHm1oJhoheHoGFQSAAV-9TJy6dJRM3Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 34,\r\n    \"title\": \"Movie Test 1\",\r\n    \"description\": \"Movie Test 1\",\r\n    \"durationInMins\": 149,\r\n    \"language\": \"VN\",\r\n    \"releaseDate\": \"03/05/2023\",\r\n    \"country\": \"US\",\r\n    \"image\": \"https://cdn.discordapp.com/attachments/1058632154696921108/1105736293549346856/129aeeb6-6ae6-4b4b-b4e1-5f38dd1e9bc6.png\",\r\n    \"trailer\": \"https://www.youtube.com/watch?v=u3V5KDHRQvk\",\r\n    \"actors\": \"Movie Test, Movie Test, Movie Test, Movie Test\",\r\n    \"genres\": [\r\n        {\r\n            \"id\": 20,\r\n            \"genre\": \"adventure\"\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"genre\": \"science fiction\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/movie/34/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"movie",
+								"34",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Show Controller",
+			"item": [
+				{
+					"name": "Add new Show (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzNDIzMiwiZXhwIjoxNjg2ODM3ODMyfQ.jyWnN94L6D2w7uE8WEDh8wPN5INF0hfYctFONjI6MEM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cinemaID\" : \"25e26bca-b261282c-7900bb67\",\r\n    \"movieID\" : 1,\r\n    \"start_time\" : \"20/05/2023 07:45\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/show/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add List of New Shows (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzNDIzMiwiZXhwIjoxNjg2ODM3ODMyfQ.jyWnN94L6D2w7uE8WEDh8wPN5INF0hfYctFONjI6MEM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 17,\r\n        \"start_time\": \"12/06/2023 19:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 9,\r\n        \"start_time\": \"10/06/2023 14:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 22,\r\n        \"start_time\": \"08/06/2023 21:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 3,\r\n        \"start_time\": \"13/06/2023 17:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 12,\r\n        \"start_time\": \"11/06/2023 20:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 6,\r\n        \"start_time\": \"09/06/2023 16:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 19,\r\n        \"start_time\": \"10/06/2023 12:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 8,\r\n        \"start_time\": \"07/06/2023 18:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 23,\r\n        \"start_time\": \"12/06/2023 16:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 23,\r\n        \"start_time\": \"12/06/2023 16:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 5,\r\n        \"start_time\": \"08/06/2023 14:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 13,\r\n        \"start_time\": \"11/06/2023 15:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 7,\r\n        \"start_time\": \"09/06/2023 19:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 1,\r\n        \"start_time\": \"07/06/2023 13:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 25,\r\n        \"start_time\": \"13/06/2023 21:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 16,\r\n        \"start_time\": \"10/06/2023 16:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 11,\r\n        \"start_time\": \"08/06/2023 18:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 4,\r\n        \"start_time\": \"12/06/2023 17:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 20,\r\n        \"start_time\": \"11/06/2023 19:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 15,\r\n        \"start_time\": \"09/06/2023 14:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 2,\r\n        \"start_time\": \"13/06/2023 16:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 18,\r\n        \"start_time\": \"12/06/2023 18:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 10,\r\n        \"start_time\": \"10/06/2023 13:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 21,\r\n        \"start_time\": \"08/06/2023 20:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 14,\r\n        \"start_time\": \"11/06/2023 16:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 24,\r\n        \"start_time\": \"13/06/2023 20:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"89ebffad-62ada343-8bc33338\",\r\n        \"movieID\": 5,\r\n        \"start_time\": \"09/06/2023 17:30\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"dad16036-443f367a-ba92e48e\",\r\n        \"movieID\": 20,\r\n        \"start_time\": \"10/06/2023 18:45\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 7,\r\n        \"start_time\": \"07/06/2023 15:00\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"25e26bca-b261282c-7900bb67\",\r\n        \"movieID\": 23,\r\n        \"start_time\": \"12/06/2023 19:15\"\r\n    },\r\n    {\r\n        \"cinemaID\": \"b363ab53-dc8f0e28-b9e42f03\",\r\n        \"movieID\": 9,\r\n        \"start_time\": \"08/06/2023 17:45\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/show/addlist",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"addlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Show (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTE3ODY4LCJleHAiOjE2ODQ5MjE0Njh9.1aUczze-1pTjI8M-etk8WC7rgP_BjFFY3bhCTqXizeE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cinemaID\" : \"9bb91bd6-ee9963c9-d16886a8\",\r\n    \"movieID\" : 10,\r\n    \"start_time\" : \"20/05/2023 07:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/show/9aeda369-4ea4c99a-0c849483/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"9aeda369-4ea4c99a-0c849483",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Shows",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4Njg4MTg5MCwiZXhwIjoxNjg2ODg1NDkwfQ.lnPd8CEH4lLYVAkD5jnshJM7D4V2bOv-bwp7CjqYLH8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Show By ID (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4Njg4MTg5MCwiZXhwIjoxNjg2ODg1NDkwfQ.lnPd8CEH4lLYVAkD5jnshJM7D4V2bOv-bwp7CjqYLH8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/02d49570-5763c443-0e0e20b9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"02d49570-5763c443-0e0e20b9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Seats of Show (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTE3ODY4LCJleHAiOjE2ODQ5MjE0Njh9.1aUczze-1pTjI8M-etk8WC7rgP_BjFFY3bhCTqXizeE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/088eea4c-5dcdccf9-bcb774f6/seats",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"088eea4c-5dcdccf9-bcb774f6",
+								"seats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Shows By Hall ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTE3ODY4LCJleHAiOjE2ODQ5MjE0Njh9.1aUczze-1pTjI8M-etk8WC7rgP_BjFFY3bhCTqXizeE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/fromhall?id=def7f4c6-fd2aa37e-a1b2b5b6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"fromhall"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "def7f4c6-fd2aa37e-a1b2b5b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Shows by Movie ID (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4Njk5NzMyNywiZXhwIjoxNjg3MDAwOTI3fQ.AJBWJk7Vlb-X8XEc-w6b5JzuiSFwfnf1eD13NDAAngO-uor8BaDtJflCwRPlx5jYdsqoqUBZKBEBzFo2t3NsQ98unAEAckiWUbfDQ7xnKWM7akOc91chYSanFOVMVpgs_FxGexkoTY7prI8MQJG7KNrfCVphVeU_VP3EkfjXMJq2OVGF3no_WiMW4hQCuztzEDq_ZANo6YN-mSMlD9sJujIdzfd8nVuTyeVBVy0aQ17zxEPGEMoq2_yuw35oQPXVKEP-655BAnC0BYYiXkcE4mI_3K-q5XZEdkn3rjAU-NSgYZ_JSGA-Lb_1F-Ilwl43FFdkCF9fzPZ9Mtn0VFQgyg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/frommovie?id=9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"frommovie"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Show By ID (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/show/db51ee11-69cb1d44-f71072fc/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"db51ee11-69cb1d44-f71072fc",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Show With More Information (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTIxNjA3LCJleHAiOjE2ODQ5MjUyMDd9.rSW3q8SRKlMngAwo88xTsQyitKDQRWGN5cJymsHwzA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cinemaId\" : \"def7f4c6-fd2aa37e-a1b2b5b6\",\r\n    \"movieID\" : 5,\r\n    \"start_time\" : \"20/05/2023 05:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/show/deletebyhallandmovie",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"show",
+								"deletebyhallandmovie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment Service",
+			"item": [
+				{
+					"name": "Get Comment From Id (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2ODI5NzI3LCJleHAiOjE2ODY4MzMzMjd9.ejQsZlNybB-Jh6jfVgA5fvhcRrTbrTe1Lzq8qGaDIbU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/47c0735d-40c16571-68539fe8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"47c0735d-40c16571-68539fe8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comments (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgyODMwNSwiZXhwIjoxNjg2ODMxOTA1fQ.7_JUX17drPKDX8T9-K60UtxcrxWKbipgs0LftOr86hs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comments From Movie ID (Everyone)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzODAyNCwiZXhwIjoxNjg2ODQxNjI0fQ.Tnesa1-KbrMDjUx78vbcn2FlZmLFbBFFH5VHr2aQ8jw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/movie/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"movie",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comments From User (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comments From User ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/user/10a0e73c-9935a96b-7bbc916a",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"user",
+								"10a0e73c-9935a96b-7bbc916a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Comment (User)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movie_id\" : 4,\r\n    \"comment\" : \"Good\",\r\n    \"rating\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/comment/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Comment (User)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgzMDE5MCwiZXhwIjoxNjg2ODMzNzkwfQ.Lwp7CL9G9g2pDxrTmAO_2_EAqlB6hOJXrbJ2oHPqcfA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\" : \"Hay quá hay lun ấy\",\r\n    \"rating\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/comment/6c1746b1-afc2792a-27687e6c/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"6c1746b1-afc2792a-27687e6c",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Delete Comment By Username (User)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2ODI1Mzc5LCJleHAiOjE2ODY4Mjg5Nzl9.Iwy8Dpo0G0b1RPkB4_bJ6aOixSqX0uses8WDuwf3ymY",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgyODMwNSwiZXhwIjoxNjg2ODMxOTA1fQ.7_JUX17drPKDX8T9-K60UtxcrxWKbipgs0LftOr86hs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/1a5d0860-8925994c-92e313f7/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"1a5d0860-8925994c-92e313f7",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Delete Comment (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJsYWxhZm9yZXZlciIsImlhdCI6MTY4NjgyODMwNSwiZXhwIjoxNjg2ODMxOTA1fQ.7_JUX17drPKDX8T9-K60UtxcrxWKbipgs0LftOr86hs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/comment/1a5d0860-8925994c-92e313f7/admin_delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"comment",
+								"1a5d0860-8925994c-92e313f7",
+								"admin_delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking Controller",
+			"item": [
+				{
+					"name": "Create Booking (User)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg2MjExNzMwLCJleHAiOjE2ODYyMTUzMzB9.nsw_0y6QCH2_0sEqTBMkYjzq0ml7l1ahWkFnqXOvreI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seat_ids\" : [\"nwyw77S92R\", \"nxalg3nTw0\"],\r\n    \"show_id\" : \"0320009e-2e0ba721-cb853c93\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/booking/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking From ID (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTI0ODk3LCJleHAiOjE2ODQ5Mjg0OTd9.JLI3z2_dOFghs6THP0jT_i6MLUqOf0xTp6Ms5ZklDtg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/booking/352d3e81-25a7e444-77bb0cbc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"352d3e81-25a7e444-77bb0cbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Booking (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/test/booking/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"booking",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking From User (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/booking/user/florentino/352d3e81-25a7e444-77bb0cbc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"user",
+								"florentino",
+								"352d3e81-25a7e444-77bb0cbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List of Bookings From User (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/booking/user/florentino/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"user",
+								"florentino",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Status for Booking (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/booking/user/florentino/99cdac45-ea280026-61b77c3c/setstatus?value=cancled",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"user",
+								"florentino",
+								"99cdac45-ea280026-61b77c3c",
+								"setstatus"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "cancled"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancle Booking (User)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9TVVBFUl9BRE1JTiJ9LHsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn1dLCJzdWIiOiJmbG9yZW50aW5vIiwiaWF0IjoxNjg0OTI0ODk3LCJleHAiOjE2ODQ5Mjg0OTd9.JLI3z2_dOFghs6THP0jT_i6MLUqOf0xTp6Ms5ZklDtg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seat_ids\" : [\"JWvUrl0cnh\", \"xSLYtY3j9z\"],\r\n    \"show_id\" : \"acd7568a-9fb56ade-e9c53a55\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/booking/352d3e81-25a7e444-77bb0cbc/cancle",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"booking",
+								"352d3e81-25a7e444-77bb0cbc",
+								"cancle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Controller",
+			"item": [
+				{
+					"name": "Create payment (User)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookingID\" : \"f6f1da5a-c5db8e42-28664c16\",\r\n    \"cardID\" : \"1234567890\",\r\n    \"cardName\" : \"Nguyen Van A\",\r\n    \"CVCnumber\" : 12335,\r\n    \"hash\" : \"915d26361549f7fa6a4b551dac81f16c1b4349a0dc88c825922bcaf22e06a01b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/payment/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment From ID (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/payment/2b927f6c-2ff90eef-a408d522",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"2b927f6c-2ff90eef-a408d522"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payments of User (User)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorication",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/test/payment/getall",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"payment",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
