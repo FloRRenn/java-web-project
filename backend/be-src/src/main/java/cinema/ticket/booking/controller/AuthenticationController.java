@@ -51,8 +51,8 @@ public class AuthenticationController {
 							content = @Content( mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
 	     }
 	)
-	public ResponseEntity<MyApiResponse> signup(@RequestBody @Valid SignUpRequest request, BindingResult bindingResult, @RequestHeader("X-Forward-For") String ip_client) {
-		return ResponseEntity.ok(authService.signup(request, ip_client));
+	public ResponseEntity<MyApiResponse> signup(@RequestBody @Valid SignUpRequest request, BindingResult bindingResult) {
+		return ResponseEntity.ok(authService.signup(request, "1.2.3.4"));
 	}
 	
 	

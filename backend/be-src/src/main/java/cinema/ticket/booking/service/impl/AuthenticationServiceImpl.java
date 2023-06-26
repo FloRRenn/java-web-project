@@ -46,7 +46,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class AuthenticationServiceImpl implements AuthenticationService {
 	
 	final private int length = 50;
-	final private int MAX_SIGNUP_ACCOUNTS = 2; 
 	
 	@Value("${app.redirectURL}")
 	private String redirectURL;
@@ -108,12 +107,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	@Override
 	public MyApiResponse signup(SignUpRequest request, String client_ip) {	
-		
-		int countAccountTempFromIP = userTmpREPO.countByIp(client_ip);
-		int countAccountFromIP = userSER.countAccFromIP(client_ip);
-		
-		if (countAccountTempFromIP + countAccountFromIP == this.MAX_SIGNUP_ACCOUNTS)
-			throw new MyBadRequestException("Too many accounts from this IP");
 		
 		String username = inputValidationSER.sanitizeInput(request.getUsername()).toLowerCase();
         String password = inputValidationSER.sanitizeInput(request.getPassword());
@@ -232,11 +225,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		return new AuthenticationResponse(accessToken, data.getData().getRefreshToken(), "", "");
 	}
 	
-	@Scheduled(fixedDelay = 5)
+	@Scheduled(fixedDelay = 1)
 	public void sendVerifyMail() {
 		while (this.mailQueue.size() != 0) {
 			EmailResponse data = this.mailQueue.poll();
+			System.out.println("Sending to mail " + data.getMail());
 			emailSER.sendMail(data.getMail(), data.getSubject(), data.getContent());
+			System.out.println("=====> Done");
 		}
 	}
 }

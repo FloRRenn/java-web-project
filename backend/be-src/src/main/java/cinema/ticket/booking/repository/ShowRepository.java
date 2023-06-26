@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import cinema.ticket.booking.model.CinemaShow;
 
 @Repository
-public interface ShowRepository extends JpaRepository<CinemaShow, Long> {
+public interface ShowRepository extends JpaRepository<CinemaShow, String> {
 
 }

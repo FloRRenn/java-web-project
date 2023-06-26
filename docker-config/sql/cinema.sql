@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 19, 2023 at 05:07 AM
--- Server version: 8.0.32
--- PHP Version: 8.2.3
+-- Host: db:3306
+-- Generation Time: Jun 25, 2023 at 11:57 PM
+-- Server version: 8.0.33
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mytestdb`
+-- Database: `cinemaDB`
 --
 
 -- --------------------------------------------------------
@@ -48,6 +48,7 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`id`, `address`, `create_at`, `email`, `fullname`, `ip`, `password`, `phone`, `status`, `update_at`, `username`) VALUES
 ('04767f9e-2fbe4a11-1684c93d', '213/324 asdsa', '2023-06-19 11:55:43.130000', 'vD@gmail.com', 'I Am User 2', '23.4.3.6', '$2a$10$w3zSJPc.jls3dbA0xSNb7eE9NQpfYv9cKgT7W7.G8KM3MqOLaPdt2', '0129323', 'ACTIVE', '2023-06-19 11:55:43.130000', 'user_2'),
 ('562db9be-1e0c9cc6-66569a1b', '213/324 asdsa', '2023-06-19 11:55:42.868000', 'vA@gmail.com', 'I Am Super Admin', '1.2.3.4', '$2a$10$rWu91eFVqRkXOdu8ybe3/e7jAWC7GOJlq/nGr2hTzyh7zHBkcqBcG', '0122323', 'ACTIVE', '2023-06-19 11:55:42.868000', 'super_admin.1234'),
+('7540f518-84b36801-ec034014', '141/21 street number 7, Go Vap', '2023-06-26 06:51:02.271000', 'nguyenductan04202@gmail.com', 'Nguyễn Đức Tấn', '1.2.3.4', '$2a$10$VwamNFng4LgHPof6obHw6.JHFEFOYTfsL1OzCt3DqgQmJPXNnLvIO', '0923142408', 'ACTIVE', '2023-06-26 06:51:02.271000', 'avart'),
 ('baf537e3-ee782072-6f273b97', '213/324 asdsa', '2023-06-19 11:55:42.971000', 'vB@gmail.com', 'I Am Admin', '4.5.6.7', '$2a$10$i9Cd5i5fwLhCIO9xd.u4oOP/k6B1mYMSuS8c1GV3LdZokcuZK4OFa', '0124323', 'ACTIVE', '2023-06-19 11:55:42.971000', 'admin.1234'),
 ('fa19dcbd-241797c7-b83f36c5', '213/324 asdsa', '2023-06-19 11:55:43.052000', 'vC@gmail.com', 'I Am User 1', '23.42.54.42', '$2a$10$gpll.buK1FlpPLBLkrDUyeVpWfzqvuchjfmCg.xvmT3CZupPzSwCK', '0126323', 'ACTIVE', '2023-06-19 11:55:43.052000', 'user_1');
 
@@ -73,7 +74,8 @@ INSERT INTO `account_roles` (`account_id`, `roles_id`) VALUES
 ('baf537e3-ee782072-6f273b97', 1),
 ('baf537e3-ee782072-6f273b97', 2),
 ('fa19dcbd-241797c7-b83f36c5', 2),
-('04767f9e-2fbe4a11-1684c93d', 2);
+('04767f9e-2fbe4a11-1684c93d', 2),
+('7540f518-84b36801-ec034014', 2);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ CREATE TABLE `account_temp_seq` (
 --
 
 INSERT INTO `account_temp_seq` (`next_val`) VALUES
-(1);
+(51);
 
 -- --------------------------------------------------------
 
@@ -127,6 +129,13 @@ CREATE TABLE `booking` (
   `user_id` varchar(26) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `create_at`, `status`, `update_at`, `show_id`, `user_id`) VALUES
+('76027d91-63cf320f-4f35d314', '2023-06-26 06:52:15.047000', 'BOOKED', '2023-06-26 06:54:11.632000', '9ec7e849-190e222e-de378f6a', '7540f518-84b36801-ec034014');
+
 -- --------------------------------------------------------
 
 --
@@ -137,6 +146,14 @@ CREATE TABLE `booking_seats` (
   `booking_id` varchar(26) NOT NULL,
   `seats_id` varchar(26) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `booking_seats`
+--
+
+INSERT INTO `booking_seats` (`booking_id`, `seats_id`) VALUES
+('76027d91-63cf320f-4f35d314', '4RD62LCqDP'),
+('76027d91-63cf320f-4f35d314', '1vjhQQUkZz');
 
 -- --------------------------------------------------------
 
@@ -843,6 +860,13 @@ CREATE TABLE `payment` (
   `booking_id` varchar(26) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `amount`, `create_at`, `status`, `update_at`, `booking_id`) VALUES
+('f1d2859f-7086d6a9-5bed308f', 20000, '2023-06-26 06:52:24.176000', 'PAID', '2023-06-26 06:53:20.094000', '76027d91-63cf320f-4f35d314');
+
 -- --------------------------------------------------------
 
 --
@@ -935,7 +959,7 @@ INSERT INTO `show_seat` (`id`, `create_at`, `status`, `update_at`, `cinema_seat_
 ('1qLv67SI7w', '2023-06-19 11:58:57.566000', 'AVAILABLE', '2023-06-19 11:58:57.566000', 80, '9ec7e849-190e222e-de378f6a'),
 ('1qVmH3HF2o', '2023-06-19 11:58:58.480000', 'AVAILABLE', '2023-06-19 11:58:58.480000', 152, '9b5ee46d-26e93707-d9784912'),
 ('1taBEhlExD', '2023-06-19 11:58:58.981000', 'AVAILABLE', '2023-06-19 11:58:58.981000', 104, '8ea0f565-e5aa3367-d72511a6'),
-('1vjhQQUkZz', '2023-06-19 11:58:57.412000', 'AVAILABLE', '2023-06-19 11:58:57.412000', 48, '9ec7e849-190e222e-de378f6a'),
+('1vjhQQUkZz', '2023-06-19 11:58:57.412000', 'BOOKED', '2023-06-26 06:54:11.667000', 48, '9ec7e849-190e222e-de378f6a'),
 ('1WDYcPGhGg', '2023-06-19 11:58:54.026000', 'AVAILABLE', '2023-06-19 11:58:54.026000', 72, 'c21543d4-3f2474b3-b8f7484d'),
 ('1WTgoCGsjB', '2023-06-19 11:58:55.938000', 'AVAILABLE', '2023-06-19 11:58:55.938000', 152, '25d7d885-39cdc7e1-6aaabf75'),
 ('1xC3MLCp5I', '2023-06-19 11:58:54.108000', 'AVAILABLE', '2023-06-19 11:58:54.108000', 87, '33c9b15c-f26b7368-dbb825a3'),
@@ -997,7 +1021,7 @@ INSERT INTO `show_seat` (`id`, `create_at`, `status`, `update_at`, `cinema_seat_
 ('4NtTY5AVvI', '2023-06-19 11:58:58.972000', 'AVAILABLE', '2023-06-19 11:58:58.972000', 102, '8ea0f565-e5aa3367-d72511a6'),
 ('4p5iFzybrY', '2023-06-19 11:58:56.127000', 'AVAILABLE', '2023-06-19 11:58:56.127000', 120, 'd419322a-028817a7-fdfc00b4'),
 ('4r9AyUNhui', '2023-06-19 11:58:56.032000', 'AVAILABLE', '2023-06-19 11:58:56.032000', 94, 'd419322a-028817a7-fdfc00b4'),
-('4RD62LCqDP', '2023-06-19 11:58:57.390000', 'AVAILABLE', '2023-06-19 11:58:57.390000', 42, '9ec7e849-190e222e-de378f6a'),
+('4RD62LCqDP', '2023-06-19 11:58:57.390000', 'BOOKED', '2023-06-26 06:54:11.694000', 42, '9ec7e849-190e222e-de378f6a'),
 ('4tKe5iu8gq', '2023-06-19 11:58:56.477000', 'AVAILABLE', '2023-06-19 11:58:56.478000', 83, 'a38986be-920b64bf-147258bc'),
 ('4uDIoKTjwm', '2023-06-19 11:58:56.354000', 'AVAILABLE', '2023-06-19 11:58:56.354000', 54, '9c93fcf6-4ee7aba9-9824ff4d'),
 ('4uGZU0Y5gF', '2023-06-19 11:58:59.328000', 'AVAILABLE', '2023-06-19 11:58:59.328000', 61, '81ac355e-7f992d9d-5cdfd666'),
@@ -2169,6 +2193,13 @@ CREATE TABLE `token` (
   `refresh_token` varchar(3000) NOT NULL,
   `user_id` varchar(26) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `token`
+--
+
+INSERT INTO `token` (`id`, `access_token`, `refresh_token`, `user_id`) VALUES
+('ea70bb3b-276c22c5-12e6a688', 'WiJ3wtdMlykixwlEhzwyoPn6TeXTA5YoC3DMmu/5EhmNZ1TKHoSm/ZXocIBNmXP65mQOxLmzZpa5sXWXKcAH4uaouxpt3LEktH2XDa5nW6hNeXFGmR74D0Zyw62m8XKyk5DiT8BPnn7f+csNwCBAx85y7g1DQnuzMaCIcaqvczYUWJq8M53F/qMIZ9bS2b5v3QJOaIM70PKMfSqW5sjh3dAofXdCwdrc3Z2EDXdctmEaIg06mITbcnDFvirhbkEYoP0CiHbgoG1VoYxAYykp06FVK74bUdeSlAzpaNVWKaHVGTJNKVNtdRErlBdhxeblrmuYKQX/H/TwWBw0efD4QKvUMvSFiB47/5bPOJNG7kMCexbHTD9//+xrGx/ofpPQRlrpwPZnjq6z6vdEG5Wvm1W45VtxVEfFu9ze6tPY0+gbJn6WIVOS66TcbwSUuz84hVXY4dim4XXG16nuQpk73nWtBYBZHokK+EH9qUs+I46CrVe1NxnKBLAS8Rz1byI1hSgxHVYSbBCvgLLUittphBJuSqXsGwt4S0x7/t+DoUuWIBab1eB0Zte6O94t/502BTr2LyBAulNtJr8UyW8Pumifo2aRuJgtDZmBfBwl/cv5NHOIy/66QWJlZBnZUQ==', 'WiJ3wtdMlykixwlEhzwyoPn6TeXTA5YoAnG42+vALALCeQ3JFZSU7pDEXo1MtkHPpmAnn6ivYZ+Hqk3gTsxe/YOouG07yaok/lCpM65JZaQVVHZvmDTRIQZ11Iz92HWYlpH1XJhkrFzM+NsJwSF9191m8iAARWu4cMCyfM2jR1MgIbKXb7/+gKMuZ47vrOdI4j8WVrsgxPa8ViyKh7m6r8U8N1FqzPeHwofEDQBegEsgOUgbxbm/I2O2gQW4FVUQx+gLykbQ3EVXvbVPel5p34l0MYIdHvHh9C+/dt5QYoKCAkFuHWZCeRp6rDJeytrexFmdLHyyVPDLS2dsTMryFqaiMuK2hR9zyuHKFOYCnFAfVQmwYR1n/dxvECrsN/a4HnHu3dcflvWp3bVFGeuFvVTV4hkEfmi0lJy6pJWI1/U9LzjfG2Sbv6fiJjPchgp5zBPTleOfilL10cnqaJ8Y30XDWZ5uW5wswEnRqkkBed6p302qHDnNQpgOizj3TyM6jzMmYno4bift5Yf55Odxpy5lf+XOKhQabD8tx9+9kUrQPgfZ5stPZfnGEOkd4v0EFDPvDiZlzUJjF8ZK3WMv42aZnlzNptg3Fq+3aDgl1c4=', '7540f518-84b36801-ec034014');
 
 --
 -- Indexes for dumped tables
