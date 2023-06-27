@@ -57,7 +57,7 @@ $('#genre-container').on("click", ".genre-item", function (e) {
     else 
         movieList = movieTempList.filter((m) => {
             for (let i = 0; i < genreSelectsFilter.length; i++) 
-                if (m.genre.find(d => d.genre == genreSelectsFilter[i]) == undefined)
+                if (m.genres.find(d => d.genre == genreSelectsFilter[i]) == undefined)
                     return false
    
             return true
