@@ -30,8 +30,9 @@ $("#add-comment").on( "submit", async function( event ) {
     event.preventDefault();
     const form = $(this)
 
-    let content = form.find('input[id="content"]').val()
-
+    let content = form.find('textarea[id="content"]').val().trim()
+    if (!content) return
+    
     //Request to Backend
     await PenguRequestAPI('POST', 'api/comment/add',
     {
