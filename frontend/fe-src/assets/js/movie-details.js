@@ -53,6 +53,8 @@ async function LoadComments() {
 
     let res = await PenguRequestAPI('GET', 'api/comment/movie/' + encodeURI(movieId), {}, {}, false).then(r => r.json()).catch(error => {console.log(error); return false})
 
+    res = res.sort((a,b) => new Date(b.updateAt).getTime() - new Date(a.updateAt).getTime())
+    
     for (let i = 0; i < res.length; i++) {
         let comment = res[i]
 
