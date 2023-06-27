@@ -19,7 +19,7 @@ RUN find . -type f -exec chmod 640 {} \;
 RUN find . -type d -exec chmod 550 {} \;
 RUN chmod +t -R /app
 
-# USER rest-app
+USER rest-app
 
 EXPOSE 9595
 CMD ["java", "-jar", "./restful-api-app.jar"]

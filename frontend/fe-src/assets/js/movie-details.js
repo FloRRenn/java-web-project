@@ -24,8 +24,6 @@ $(async function() {
     $('.preloader').fadeOut(1000);
 })
 
-
-
 $("#add-comment").on( "submit", async function( event ) {
     event.preventDefault();
     const form = $(this)

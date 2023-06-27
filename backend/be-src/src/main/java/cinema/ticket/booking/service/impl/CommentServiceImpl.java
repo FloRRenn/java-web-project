@@ -1,6 +1,7 @@
 package cinema.ticket.booking.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 import cinema.ticket.booking.exception.MyBadRequestException;
 import cinema.ticket.booking.exception.MyNotFoundException;
 import cinema.ticket.booking.model.Account;
+import cinema.ticket.booking.model.Booking;
 import cinema.ticket.booking.model.Comment;
 import cinema.ticket.booking.model.Movie;
+import cinema.ticket.booking.model.enumModel.BookingStatus;
+import cinema.ticket.booking.repository.BookingRepository;
 import cinema.ticket.booking.repository.CommentRepository;
 import cinema.ticket.booking.repository.MovieRepo;
 import cinema.ticket.booking.repository.UserRepository;
@@ -28,6 +32,9 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	private MovieRepo movieRepo;
+
+	@Autowired
+	private BookingRepository bookingRepo;
 	
 	@Autowired
 	private CommentRepository commentRepo;
@@ -48,16 +55,16 @@ public class CommentServiceImpl implements CommentService {
 		Account user = userRepo.getByUsername(username).orElseThrow(() -> new MyNotFoundException("User not found"));
 		Movie movie = movieRepo.findById(req.getMovieId()).orElseThrow(() -> new MyNotFoundException("Movie not found"));
 		
-//		Optional<Booking> booking = bookingRepo.findByUserIdAndMovieIdAndStatus(user.getId(), movie.getId(), BookingStatus.BOOKED);
-//		if (!booking.isPresent())
-//			throw new MyBadRequestException("You must buy ticket for this movie before reviewing.");
-//		
-//		if (commentRepo.existsByUserIdAndMovieId(user.getId(), movie.getId()))
-//			throw new MyBadRequestException("You already have reviewed this movie");
-//		
-//		if (req.getRatedStars() > 5 || req.getRatedStars() < 0)
-//			throw new MyBadRequestException("Rating number must be in range 0 and 5");
-//		
+		Optional<Booking> booking = bookingRepo.findByUserIdAndMovieIdAndStatus(user.getId(), movie.getId(), BookingStatus.BOOKED);
+		if (!booking.isPresent())
+			throw new MyBadRequestException("You must buy ticket for this movie before reviewing.");
+		
+		if (commentRepo.existsByUserIdAndMovieId(user.getId(), movie.getId()))
+			throw new MyBadRequestException("You already have reviewed this movie");
+		
+		if (req.getRatedStars() > 5 || req.getRatedStars() < 0)
+			throw new MyBadRequestException("Rating number must be in range 0 and 5");
+		
 		String valid_comment = validService.sanitizeInput(req.getComment());
 		Comment comment = new Comment(movie, user, req.getRatedStars(), valid_comment);
 		

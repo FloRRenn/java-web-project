@@ -33,7 +33,7 @@ import cinema.ticket.booking.utils.VNPay;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	
-	final private int SEND_MAIL_SCHEDULE = 10000;
+	final private int SEND_MAIL_SCHEDULE = 1000;
 	
 	Queue<PaymentResponse> sendEmail = new LinkedList<>();
 	

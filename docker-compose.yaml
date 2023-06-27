@@ -57,6 +57,9 @@ services:
       - 9595:9595
     networks:
       - backend_net
+    extra_hosts:
+      - "smtp.googlemail.com:64.233.189.16"
+      - "sandbox.vnpayment.vn:14.160.87.124"
 
   phpmyadmin:
     container_name: php-my-admin-app
