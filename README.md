@@ -10,12 +10,12 @@ Xây dựng website quản lý bán vé xem phim với các tính năng chí
 <br/>
 
 # **3. Thành viên nhóm:**
-| Sinh Viên               | MSSV        | Github Username   |
-| :----------------------- |:-----------:| -----------------:|
-| Phạm Phúc Đức           | 20520162    | [ducdottoan2002](https://github.com/ducdottoan2002)|
-| Nguyễn Hoàng Phúc       | 20520277    | [hoangfphucs](https://github.com/hoangfphucs)|
-| Nguyễn Đức Tấn          | 20520751    | [FloRRenn](https://github.com/FloRRenn)|
-| Nguyễn Nhật Hiếu Trung  | 20520830    | [nnhieutrung](https://github.com/nnhieutrung)|
+| Sinh Viên                | MSSV         | Github Username   |
+| :----------------------- |:-----------: | -----------------:|
+| Phạm Phúc Đức            | 20520162     | [ducdottoan2002](https://github.com/ducdottoan2002)|
+| Nguyễn Hoàng Phúc        | 20520277     | [hoangfphucs](https://github.com/hoangfphucs)|
+| Nguyễn Đức Tấn           | 20520751     | [FloRRenn](https://github.com/FloRRenn)|
+| Nguyễn Nhật Hiếu Trung   | 20520830     | [nnhieutrung](https://github.com/nnhieutrung)|
 <br/>
 
 # **4. Công nghệ:**
@@ -67,12 +67,12 @@ docker-compose down
 <br/>
 
 ### **B. Thông tin đăng nhập:**
-| Username   | Password    | Role        |
-|:-----------|:-----------:|:-----------:|
-| super_admin.1234 | 3Mt^tmM85YUL | Super Admin |
-| admin.1234 | 3zP!6Z13SN^w" | Admin       |
-| user_1	 | k9G*Ni91r! | User        |
-| user_2	 | hS5f%1*8V1 | User        |
+| Username         | Password      | Role        |
+|:-----------------|:-------------:|:-----------:|
+| super_admin.1234 | 3Mt^tmM85YUL  | Super Admin |
+| admin.1234       | 3zP!6Z13SN^w" | Admin       |
+| user_1	       | k9G*Ni91r!    | User        |
+| user_2	       | hS5f%1*8V1    | User        |
 
 ### **C. Thông tin thanh toán VNPAY:**
 - Ngân hàng:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`NCB`

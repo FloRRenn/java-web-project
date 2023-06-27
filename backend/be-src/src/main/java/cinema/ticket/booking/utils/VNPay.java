@@ -55,6 +55,7 @@ public class VNPay extends HttpServlet {
         vnp_Params.put("vnp_TmnCode", vnp_TmnCode);
         vnp_Params.put("vnp_Amount", String.valueOf(amount));
         vnp_Params.put("vnp_CurrCode", "VND");
+        vnp_Params.put("vnp_OrderType", "other");
 
         if (bankCode != "VNPAY") {
             vnp_Params.put("vnp_BankCode", bankCode);

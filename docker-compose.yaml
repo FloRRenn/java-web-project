@@ -30,6 +30,9 @@ services:
       MYSQL_USER: HzSRs842px7MCXZtfZHVZN6f8
       MYSQL_PASSWORD: 66JJVzfmsX79uxeJGRf95NevSP2fP9u6e5yBVRQmGUY9jbVg54
       MYSQL_ALLOW_EMPTY_PASSWORD: no
+      MYSQL_SSL_CA: ./docker-config/ssl/mysql-cert.pem
+      MYSQL_SSL_CERT: ./docker-config/ssl/mysql-cert.pem
+      MYSQL_SSL_KEY: ./docker-config/ssl/mysql-key.pem
     volumes:
       - ./docker-config/sql/cinema.sql:/docker-entrypoint-initdb.d/cinema.sql
     restart: always

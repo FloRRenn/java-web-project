@@ -7,6 +7,7 @@ RUN echo $TZ > /etc/timezone
 
 WORKDIR /app
 COPY ./be-src/target/restful-api-app.jar ./restful-api-app.jar
+# COPY ./ssl/mysql-cert.pem /etc/app/ssl/mysql-cert.pem
 
 RUN useradd -m rest-app
 RUN groupadd webapp
