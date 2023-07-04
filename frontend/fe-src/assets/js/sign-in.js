@@ -59,15 +59,6 @@ $(".account-form").on( "submit", async function( event ) {
     SetToken(res.token)
     // Redirect to /login
     let redirect = getParam('redirect')
-    if (redirect) {
-        console.log(redirect)
-        let redirectURL = new URL(redirect);
-        let originURL = new URL(window.location.href);
-        if (redirectURL.origin === originURL.origin) 
-            return window.location.href= redirect
-        
-    }
-    
 
-    window.location.href = ('/')
+    window.location.href = redirect
 });
