@@ -70,8 +70,8 @@ async function LoadComments() {
             </div>
             `)
 
-            item.find('#user').text(comment.username)
-            item.find('#content').text(comment.comment)
+            item.find('#user').html(comment.username)
+            item.find('#content').html(comment.comment)
             item.find('#voting').html((`<i class="flaticon-favorite-heart-button"></i>`).repeat(comment.rated_starts))
             
             container.append(item)
