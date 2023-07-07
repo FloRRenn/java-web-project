@@ -1,0 +1,14 @@
+```
++---config (Chứa file cấu hình website)
++---controller (Chứa file cấu hình các URI)
++---exception (Chứa file xử lý exception)
++---filter (Chứa file filter như lấy token từ request, lọc input của user)
++---model (Chứa các file model)
+   +---enumModel (Chứa các file enum cho model)
++---permission (Chứa file cấu hình quyền hạn)
++---repository (Chứa file thao tác giữa service với db)
++---request (Chứa file cấu hình cấu trúc request data được gửi từ client)
++---response (Chứa file cấu hình cấu trúc response data được gửi từ server)
++---service (Chứa file template cho thao tác giữa service giữa model và service)
+    +---impl (Chứa file cấu hình xử lý cho template của service)
+```

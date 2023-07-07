@@ -50,7 +50,8 @@ public class JwtService {
 	@Value("${app.jwtRefreshExpirationInMs}")
 	private Long expired_refresh_time;
 
-	// Generate Token ------------------------------------------------------------------------------------------------------------
+	// Generate Token
+	// ------------------------------------------------------------------------------------------------------------
 
 	public String generateToken(UserDetails userDetails) {
 		return generateToken(new HashMap<>(), userDetails);
@@ -79,8 +80,8 @@ public class JwtService {
 		return null;
 	}
 
-	private String buildToken(Map<String, Collection<?>> extraClaims, 
-						UserDetails userDetails, String key, long expiration) {
+	private String buildToken(Map<String, Collection<?>> extraClaims,
+			UserDetails userDetails, String key, long expiration) {
 		return Jwts
 				.builder()
 				.setIssuer(issuer)
@@ -93,8 +94,8 @@ public class JwtService {
 	}
 	// ------------------------------------------------------------------------------------------------------------------------
 
-
-	// Valid Token ------------------------------------------------------------------------------------------------------------
+	// Valid Token
+	// ------------------------------------------------------------------------------------------------------------
 	public boolean isValidToken(String token, UserDetails userDetails, boolean useSecretKey) {
 		final String username = extractUsername(token, useSecretKey);
 		if (username == null)
@@ -118,7 +119,7 @@ public class JwtService {
 			return extractClaim(token, secretKey, Claims::getExpiration);
 		return extractClaim(token, refreshKey, Claims::getExpiration);
 	}
-	
+
 	public <T> T extractClaim(String token, String key, Function<Claims, T> claimsResolver) {
 		Claims claims = extractAllClaims(token, key);
 		if (claims == null)
@@ -129,33 +130,33 @@ public class JwtService {
 	private Claims extractAllClaims(String token, String key) {
 		String algorithm = this.getAlgorithm(token);
 		switch (algorithm) {
-    	case "RS256":
-    		return this.RS256_verify(token);
-    		
-		case "HS256":
-			return this.HS256_verify(token);
- 
-    	default:
-    		throw new MyAccessDeniedException("Token is invalid");
-    	}
+			case "RS256":
+				return this.RS256_verify(token);
+
+			case "HS256":
+				return this.HS256_verify(token);
+
+			default:
+				throw new MyAccessDeniedException("Token is invalid");
+		}
 	}
 
 	private Claims HS256_verify(String token) {
 		try {
 			byte[] publicKey = this.publicKey.getBytes("UTF-8");
 			JwtParserBuilder claimsBuilder = Jwts.parserBuilder().setSigningKey(publicKey);
-	    	return this.getClaims(claimsBuilder, token);
+			return this.getClaims(claimsBuilder, token);
 
 		} catch (Exception e) {
 			return null;
 		}
-    }
-    
-    private Claims RS256_verify(String token) {
+	}
+
+	private Claims RS256_verify(String token) {
 		PublicKey publicKey = this.loadPublicKey();
 		JwtParserBuilder claimsBuilder = Jwts.parserBuilder().setSigningKey(publicKey);
 		return this.getClaims(claimsBuilder, token);
-    }
+	}
 
 	private Claims getClaims(JwtParserBuilder claimsBuilder, String token) {
 		try {
@@ -178,34 +179,34 @@ public class JwtService {
 			byte[] privateKeyBytes = Base64.getDecoder().decode(private_key);
 			PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-	        return keyFactory.generatePrivate(keySpec);
-	        
+			return keyFactory.generatePrivate(keySpec);
+
 		} catch (Exception e) {
 			throw new MyServerErrorException("Can not load private key " + e.getMessage());
 		}
-    }
+	}
 
 	private PublicKey loadPublicKey() {
-    	try {
-    		byte[] publicKeyBytes = Base64.getDecoder().decode(this.publicKey);
-	        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
-	        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-	        return keyFactory.generatePublic(keySpec);
-	        
-    	} catch (Exception e) {
+		try {
+			byte[] publicKeyBytes = Base64.getDecoder().decode(this.publicKey);
+			X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyBytes);
+			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+			return keyFactory.generatePublic(keySpec);
+
+		} catch (Exception e) {
 			throw new MyServerErrorException("Can not load public key");
 		}
-    }
-    
-    public String getAlgorithm(String token) {
-    	String[] tokenParts = token.split("\\.");
+	}
 
-        if (tokenParts.length >= 2) {
-            String header = new String(Base64.getUrlDecoder().decode(tokenParts[0]));
-            JSONObject headerObject = new JSONObject(header);
-            String algorithm = headerObject.getString("alg");
-            return algorithm;
-        }
-        return null;
-    }
+	public String getAlgorithm(String token) {
+		String[] tokenParts = token.split("\\.");
+
+		if (tokenParts.length >= 2) {
+			String header = new String(Base64.getUrlDecoder().decode(tokenParts[0]));
+			JSONObject headerObject = new JSONObject(header);
+			String algorithm = headerObject.getString("alg");
+			return algorithm;
+		}
+		return null;
+	}
 }

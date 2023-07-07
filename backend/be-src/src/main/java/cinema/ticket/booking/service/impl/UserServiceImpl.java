@@ -35,35 +35,35 @@ import cinema.ticket.booking.service.UserService;
 import cinema.ticket.booking.utils.Base64util;
 // import cinema.ticket.booking.utils.ChaCha20util;
 import cinema.ticket.booking.utils.DateUtils;
-import cinema.ticket.booking.utils.RandomStringGenerator;
 import cinema.ticket.booking.utils.RegexExtractor;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Value("${app.base_recover_pass_url}")
 	private String base_recover_pass_url;
-	
-	// private String secretKey = "MyChaChaKeyIsSoBadBut060koldyXC17eWCwF3hPS4bNgMH3wDJ";	
+
+	// private String secretKey =
+	// "MyChaChaKeyIsSoBadBut060koldyXC17eWCwF3hPS4bNgMH3wDJ";
 	// private Long IV = 3473735834123L;
 	// private String salt = "3a1f9b8c7d0e2f5a";
 	// private ChaCha20util cipher = new ChaCha20util(secretKey, IV, salt);
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	private UserRepository UserREPO;
-	
+
 	@Autowired
 	private RoleRepository RoleREPO;
-	
+
 	@Autowired
 	private EmailService emailSER;
-	
+
 	@Autowired
-    private InputValidationFilter inputValidationSER;
-	
+	private InputValidationFilter inputValidationSER;
+
 	private Queue<EmailResponse> mailQueue = new LinkedList<>();
 
 	@Override
@@ -94,14 +94,15 @@ public class UserServiceImpl implements UserService {
 	public List<AccountSummaryResponse> getUsers() {
 		List<Account> list = UserREPO.findAll();
 		List<AccountSummaryResponse> res = new ArrayList<AccountSummaryResponse>();
-		for (Account user : list) 
+		for (Account user : list)
 			res.add(new AccountSummaryResponse(user));
 		return res;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		Account user = UserREPO.getByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
 	}
 
@@ -110,9 +111,10 @@ public class UserServiceImpl implements UserService {
 		String regex = "^[a-zA-Z0-9._]{5,}$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(name);
-		
+
 		if (!matcher.matches())
-			throw new MyBadRequestException("Username is unvalid. Username must follow these requirements:\n + At least 5 characters long\n + No whitespace and special character, except . and _");
+			throw new MyBadRequestException(
+					"Username is unvalid. Username must follow these requirements:\n + At least 5 characters long\n + No whitespace and special character, except . and _");
 		if (UserREPO.existsByUsername(name))
 			return true;
 		return false;
@@ -122,24 +124,26 @@ public class UserServiceImpl implements UserService {
 	public Boolean EmailIsExisted(String email) {
 		String regex = "^(.+)@(.+)$";
 		Pattern pattern = Pattern.compile(regex);
-		
+
 		if (!pattern.matcher(email).matches())
 			throw new MyBadRequestException("Email is unvalid");
-		if (UserREPO.existsByEmail(email)) 
+		if (UserREPO.existsByEmail(email))
 			return true;
 		return false;
 	}
 
 	@Override
-	public Boolean PasswordIsGood(String password) {;
+	public Boolean PasswordIsGood(String password) {
+		;
 		Pattern pattern = Pattern.compile(RegexExtractor.GOOD_PASSWORD);
 		Matcher matcher = pattern.matcher(password);
-		
+
 		if (!matcher.matches())
-			throw new MyBadRequestException("Password is unvalid. Password must have:\n + At least 8 characters long\n + Contains at least one uppercase letter\n + Contains at least one lowercase letter\n + Contains at least one digit\n + Contains at least one special character\n");
+			throw new MyBadRequestException(
+					"Password is unvalid. Password must have:\n + At least 8 characters long\n + Contains at least one uppercase letter\n + Contains at least one lowercase letter\n + Contains at least one digit\n + Contains at least one special character\n");
 		return true;
 	}
-	
+
 	@Override
 	public Account getRawUserByUsername(String username) {
 		return UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -151,7 +155,7 @@ public class UserServiceImpl implements UserService {
 		AccountSummaryResponse resp = new AccountSummaryResponse(user);
 		return resp;
 	}
-	
+
 	@Override
 	public AccountSummaryResponse getUserByEmail(String email) {
 		Account user = UserREPO.getByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -162,7 +166,7 @@ public class UserServiceImpl implements UserService {
 	public List<AccountSummaryResponse> searchByName(String username) {
 		List<Account> list = UserREPO.findByUsernameContaining(username);
 		List<AccountSummaryResponse> res = new ArrayList<AccountSummaryResponse>();
-		for (Account user : list) 
+		for (Account user : list)
 			res.add(new AccountSummaryResponse(user));
 		return res;
 	}
@@ -174,7 +178,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Collection<Role> getRoleFromUser(String username) {
-		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		Account user = UserREPO.getByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		return user.getRoles();
 	}
 
@@ -182,16 +187,16 @@ public class UserServiceImpl implements UserService {
 	public boolean userHaveRole(String username, ERole role) {
 		Collection<Role> roles = this.getRoleFromUser(username);
 		for (Role r : roles) {
-			if (r.getRole().equals(role.name())) 
+			if (r.getRole().equals(role.name()))
 				return true;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean userHaveRole(Account user, ERole role) {
 		for (Role r : user.getRoles()) {
-			if (r.getRole().equals(role.name())) 
+			if (r.getRole().equals(role.name()))
 				return true;
 		}
 		return false;
@@ -199,10 +204,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeRoleUser(String username, ERole role) {
-		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		Account user = UserREPO.getByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		Collection<Role> old_roles = user.getRoles();
 		Collection<Role> new_roles = new ArrayList<>();
-		
+
 		for (Role r : old_roles) {
 			if (r.getRole().equals(role.name()))
 				continue;
@@ -214,42 +220,44 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public MyApiResponse getURIforgetPassword(String username) throws Exception {
-		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-		//String ciphertext = cipher.encrypt(email);
+		Account user = UserREPO.getByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		// String ciphertext = cipher.encrypt(email);
 
 		JSONObject data = new JSONObject();
 		data.put("username", username);
 		data.put("expired", DateUtils.getDateAfter(2));
 		String ciphertext = Base64util.encode5Times(data.toString());
 
-		this.mailQueue.offer(new EmailResponse(user.getEmail(), 
-				"Movie-Project: Recover your email", 
-				"This is your link to set new password, it will be expired in 2 hours. Please, do not share it to anyone.\n" + 
-				base_recover_pass_url + ciphertext));
+		this.mailQueue.offer(new EmailResponse(user.getEmail(),
+				"Movie-Project: Recover your email",
+				"This is your link to set new password, it will be expired in 2 hours. Please, do not share it to anyone.\n"
+						+
+						base_recover_pass_url + ciphertext));
 
 		return new MyApiResponse("Please check your email");
 	}
-	
+
 	private JSONObject checkToken(String code) {
-		// String decryption =  cipher.decrypt(code);
+		// String decryption = cipher.decrypt(code);
 		String decryption = Base64util.decode5Times(code);
 		if (decryption == null)
 			return null;
-		
+
 		try {
-			JSONObject json_data = new JSONObject(decryption); 
-			String date = (String)json_data.get("expired");
-			
+			JSONObject json_data = new JSONObject(decryption);
+			String date = (String) json_data.get("expired");
+
 			if (DateUtils.YourDateIsGreaterThanNow(date, 2))
 				return null;
-			
+
 			return json_data;
 		} catch (Exception e) {
 			return null;
 		}
-		
+
 	}
-	
+
 	@Override
 	public MyApiResponse checkReocveryCode(String code) {
 		JSONObject decryption = this.checkToken(code);
@@ -263,19 +271,20 @@ public class UserServiceImpl implements UserService {
 		JSONObject decryption = this.checkToken(code);
 		if (decryption == null)
 			throw new MyNotFoundException("URL Not Found");
-		
-		String username = (String)decryption.get("username");
-		Account user = UserREPO.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+		String username = (String) decryption.get("username");
+		Account user = UserREPO.getByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
 		if (!inputValidationSER.checkInput(password))
 			throw new MyBadRequestException("Contain illegal character");
 		this.PasswordIsGood(password);
-		
+
 		user.setPassword(passwordEncoder.encode(password));
 		UserREPO.save(user);
 		return new MyApiResponse("Set new password");
 	}
-	
+
 	@Scheduled(fixedDelay = 5000)
 	public void sendRestCodeMail() {
 		while (this.mailQueue.size() != 0) {
