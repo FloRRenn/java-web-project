@@ -45,6 +45,7 @@ cinema\ticket\booking\response\ErrorResponse.class
 cinema\ticket\booking\service\impl\GenreServiceImpl.class
 cinema\ticket\booking\exception\MyBadRequestException.class
 cinema\ticket\booking\exception\MyConflictExecption.class
+cinema\ticket\booking\controller\ExampleController.class
 cinema\ticket\booking\service\JWTokenService.class
 cinema\ticket\booking\service\impl\UserServiceImpl.class
 cinema\ticket\booking\model\Booking.class
