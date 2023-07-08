@@ -257,6 +257,3 @@ docker-compose down
 
 ---
 © Group **Pengu** - University of Information Technology
-
-$2a$10$h4u163FTe.NaXBR5X0Yv6uf1ZCa52j3EOUnwUxDoQqqgLQiCs5quC
-$2a$10$a/ugSBgOsxP2f0m8H1Jo0uRWPO2GLcGYjKps4Sy3LVPLFoAflo8xC
