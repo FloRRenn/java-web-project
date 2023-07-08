@@ -28,77 +28,76 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-
 @Entity
-@Table(name = "Account",
-		uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "email" })
-	})
+@Table(name = "Account", uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "email" })
+})
 public class Account implements UserDetails {
-	
+
 	private static final long serialVersionUID = -7242669578209869683L;
 
 	@Id
-    @GeneratedValue(generator = "custom-uuid")
-    @GenericGenerator(name = "custom-uuid", strategy = "cinema.ticket.booking.utils.CustomUUIDGenerator")
+	@GeneratedValue(generator = "custom-uuid")
+	@GenericGenerator(name = "custom-uuid", strategy = "cinema.ticket.booking.utils.CustomUUIDGenerator")
 	@Column(name = "id", unique = true, nullable = false, length = 26, insertable = false)
-    private String id;
-	
+	private String id;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "username", length = 128, nullable = false)
-    private String username;
-	
+	private String username;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "password", nullable = false)
-    private String password;
-	
+	private String password;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "fullname", nullable = false)
 	private String fullname;
-	
+
 	@NotBlank
 	@NotNull
 	@Column(name = "address")
-    private String address;
-	
+	private String address;
+
 	@NotBlank
 	@NotNull
 	@Email
 	@Column(name = "email", length = 128, nullable = false)
-    private String email;
-	
+	private String email;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "phone")
-    private String phone;
-	
+	private String phone;
+
 	@NotBlank
 	@NotNull
 	@Column(name = "ip")
-    private String ip;
-	
+	private String ip;
+
 	@CreationTimestamp
 	@Column(name = "create_at", nullable = false, updatable = false)
 	private Date create_at;
-	
+
 	@UpdateTimestamp
 	@Column(name = "update_at", nullable = true, updatable = true)
 	private Date update_at;
-	
+
 	@Enumerated(EnumType.STRING)
-    private UserStatus status;
-	
+	private UserStatus status;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Role> roles = new ArrayList<>();
-	
-	public Account() {}
-	
-	public Account(String id, String fullname, 
-					String username, String password, 
-					String phone, String address, 
-					String email, String ip, UserStatus status) {
+
+	public Account() {
+	}
+
+	public Account(String id, String fullname,
+			String username, String password,
+			String phone, String address,
+			String email, String ip, UserStatus status) {
 		this.id = id;
 		this.fullname = fullname;
 		this.username = username;
@@ -109,7 +108,7 @@ public class Account implements UserDetails {
 		this.ip = ip;
 		this.status = status;
 	}
-	
+
 	public Account(AccountTemp tmp) {
 		this.id = null;
 		this.fullname = tmp.getFullname();
@@ -121,107 +120,107 @@ public class Account implements UserDetails {
 		this.ip = tmp.getIp();
 		this.status = UserStatus.ACTIVE;
 	}
-    
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-    
-    public void setUsername(String username) {
-    	this.username = username;
-    }
-    
-    @Override
-    public String getUsername() {
-    	return this.username;
-    }
-    
-    @Override
-    public String getPassword() {
-        return password;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    public String getFullname() {
-        return this.fullname;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setFullname(String name) {
-        this.fullname = name;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	@Override
+	public String getPassword() {
+		return password;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getFullname() {
+		return this.fullname;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setFullname(String name) {
+		this.fullname = name;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getStatus() {
-        return status.name();
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
-    
-    public void setRoles(Collection<Role> roles) {
-    	this.roles = roles;
-    }
-    
-    public void addRole(Role role) {
-    	this.roles.add(role);
-    }
-    
-    public Collection<Role> getRoles() {
-    	return this.roles;
-    }
-    
-    public Date getCreateAt() {
-    	return this.create_at;
-    }
-    
-    public Date getUpdateAt() {
-    	return this.update_at;
-    }
-    
-    public void setIp(String ip) {
-    	this.ip = ip;
-    }
-    
-    public String getIp() {
-    	return this.ip;
-    }
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getStatus() {
+		return status.name();
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+
+	public Collection<Role> getRoles() {
+		return this.roles;
+	}
+
+	public Date getCreateAt() {
+		return this.create_at;
+	}
+
+	public Date getUpdateAt() {
+		return this.update_at;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getIp() {
+		return this.ip;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return roles.stream().map(r -> new SimpleGrantedAuthority(r.getRole())).collect(Collectors.toList());
-//		Collection<SimpleGrantedAuthority> auths = new ArrayList<>();
-//		roles.stream().map(r -> new SimpleGrantedAuthority(r.getRole()));
-		//return List.of(new SimpleGrantedAuthority(auths.toString()));
+		// Collection<SimpleGrantedAuthority> auths = new ArrayList<>();
+		// roles.stream().map(r -> new SimpleGrantedAuthority(r.getRole()));
+		// return List.of(new SimpleGrantedAuthority(auths.toString()));
 	}
 
 	@Override
@@ -243,5 +242,5 @@ public class Account implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-    
+
 }

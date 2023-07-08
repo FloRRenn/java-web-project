@@ -1,8 +1,10 @@
 package cinema.ticket.booking.security;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,50 +26,56 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Autowired
 	private JwtService jwtService;
-	
+
 	@Autowired
 	private UserDetailsService userDetailService;
 
 	@Override
-	protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
+	protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+			@NonNull FilterChain filterChain)
 			throws ServletException, IOException {
 		try {
 			final String authHeader = request.getHeader("Authorication");
 			final String jwt;
 			final String username;
-			
+
 			if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 				filterChain.doFilter(request, response);
 				return;
 			}
-			
+
 			jwt = authHeader.substring(7);
-			username = jwtService.extractUsername(jwt, true);	
-			
+			username = jwtService.extractUsername(jwt, true);
+
 			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 				UserDetails userDetail = userDetailService.loadUserByUsername(username);
 				// System.out.println("=====> " + userDetail.getUsername());
-				
+
 				if (jwtService.isValidToken(jwt, userDetail, true)) {
-					UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
+					// This is not a vulnerable code
+					// UsernamePasswordAuthenticationToken authToken = new
+					// UsernamePasswordAuthenticationToken(userDetail, null,
+					// userDetail.getAuthorities());
+
+					// This is a vulnerable code
+					UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetail,
+							null, jwtService.getAuthoritiesFromToken(jwt));
+
 					authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 					SecurityContextHolder.getContext().setAuthentication(authToken);
 				}
 				filterChain.doFilter(request, response);
-			}
-			else 
+			} else
 				sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Token is invalid");
-			
+
 		} catch (AccessDeniedException e) {
 			sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "Token is invalid");
 		}
 	}
-	
-	private void sendErrorResponse(HttpServletResponse response, int statusCode, String message) throws IOException {
-        response.setStatus(statusCode);
-        response.setContentType("application/json");
-        response.getWriter().write("{\"error\": \"" + message + "\"}");
-    }
-	
-}
 
+	private void sendErrorResponse(HttpServletResponse response, int statusCode, String message) throws IOException {
+		response.setStatus(statusCode);
+		response.setContentType("application/json");
+		response.getWriter().write("{\"error\": \"" + message + "\"}");
+	}
+}

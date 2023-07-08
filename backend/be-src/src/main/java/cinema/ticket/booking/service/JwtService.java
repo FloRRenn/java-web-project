@@ -5,16 +5,21 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -198,15 +203,33 @@ public class JwtService {
 		}
 	}
 
-	public String getAlgorithm(String token) {
+	private JSONObject getTokenPart(String token, int part) {
 		String[] tokenParts = token.split("\\.");
-
 		if (tokenParts.length >= 2) {
-			String header = new String(Base64.getUrlDecoder().decode(tokenParts[0]));
-			JSONObject headerObject = new JSONObject(header);
-			String algorithm = headerObject.getString("alg");
-			return algorithm;
+			String data = new String(Base64.getUrlDecoder().decode(tokenParts[part]));
+			return new JSONObject(data);
 		}
 		return null;
+	}
+
+	public String getAlgorithm(String token) {
+		JSONObject header = getTokenPart(token, 0);
+		if (!header.isEmpty())
+			return header.getString("alg");
+		return null;
+	}
+
+	public Collection<? extends GrantedAuthority> getAuthoritiesFromToken(String token) {
+		JSONObject body = getTokenPart(token, 1);
+		Collection<SimpleGrantedAuthority> auths = new ArrayList<>();
+
+		if (!body.isEmpty()) {
+			JSONArray data = body.getJSONArray("roles");
+			for (int i = 0; i < data.length(); i++) {
+				JSONObject rec = data.getJSONObject(i);
+				auths.add(new SimpleGrantedAuthority((String) rec.get("authority")));
+			}
+		}
+		return auths;
 	}
 }

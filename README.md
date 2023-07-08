@@ -70,7 +70,7 @@ docker-compose down
 | Username         | Password      | Role        |
 |:-----------------|:-------------:|:-----------:|
 | super_admin.1234 | 3Mt^tmM85YUL  | Super Admin |
-| admin.1234       | 3zP!6Z13SN^w" | Admin       |
+| admin.1234       | TiNkErBeLl    | Admin       |
 | user_1	       | k9G*Ni91r!    | User        |
 | user_2	       | hS5f%1*8V1    | User        |
 
@@ -213,25 +213,25 @@ docker-compose down
 </br></br>
 
 # **11. Các Lỗ hổng được thiết kế trong website:**
-### **A. Bypass JWT token trong xác thực:**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lỗ hổng được mô phỏng dựa trên [CVE-2015-9235](https://nvd.nist.gov/vuln/detail/CVE-2015-9235), xuất hiện trên các token sử dụng thuật toán `RS`/`ES`. Về cơ bản, các trình xác thực sẽ dựa trên thuật toán được ghi trong header để thực hiện việc xác thực. Thuật toán `RS`/`ES` sử dụng private key để ký và public key để xác thực, còn thuật toán `HS` sử dụng một public key duy nhất cho cả hai việc ký và xác thực. Vì vậy nếu kẻ tấn công có được public key của server, chúng sẽ tạo token khác bằng thuật toán `HS`, khi này trình xác thực kiểm tra token, xác định nó đúng và cuối cùng là bypass thành công.
+### **A. Bypass xác thực của JWT Token:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web API sử dụng JWT token để xác thực và phân quyền người dùng, thuật toán được sử dụng cho việc cấp và xác thực là RS256. Lỗ hổng này được mô phỏng dựa trên CVE-2015-9235, xảy ra là trang web sẽ dựa vào thuật toán trên phần header của token để thực hiện quy trình xác thực sẽ thuật toán đó. Khi trang web sử dụng thuật toán RS/ES để ký (dùng private key) và xác thực (dùng public key) cho token, nhưng khi kẻ tấn công có được public key, chúng sẽ sử dụng thuật toán HS (dùng public key cho cả việc ký và xác thực) để tạo token, khi đưa cho web kiểm tra, nó sẽ dựa vào thuật toán trong phần header của token để lựa chọn thuật toán xác thực, và vì cả thuật toán RS/ES và HS đều dùng public key để xác thực nên việc bypass sẽ thành công. 
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mức độ ảnh hưởng:** Cao.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Phạm vi ảnh hưởng:** Toàn bộ các trang web.
 #### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Hậu quả:** Leo thang đặc quyền, có khả năng lấy và chỉnh sửa toàn bộ data có trong database thông qua các API.
 </br>
 
-### **B. Lỗ hổng trong đặt lại mật khẩu mới:**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Khi user quên password, website sẽ có chức năng cho phép đặt mật khẩu mới, khi nhập vào `username` có tồn tại trong database, một link reset password sẽ được gửi đến email của user đó. Trên link này chứa một mã định danh cho việc đổi mật khẩu, mã định danh này được tạo bởi `username` và `thời điểm hết hạn` tằng **Base64**. Vì vậy, kẻ tấn công chỉ cần đổi một `username` của bất kỳ ai vào và encode bằng Bas64 thì có thể tạo ra một mã định danh khác, có thể thay đổi mật khẩu của bất kỳ user nào.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mức độ ảnh hưởng:** Cao.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Phạm vi ảnh hưởng:** Toàn bộ các trang web.
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Hậu quả:** Nếu kẻ tấn công biết được username của `admin`, chúng sẽ có thể leo thang đặc quyền, có khả năng lấy và chỉnh sửa toàn bộ data có trong database thông qua các API.
+### **B. Broken Access Control:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uri GET /api/auth/login không có cơ chế giới hạn lượt truy cập sau nhiều lần đăng nhập không thành công dẫn đến kẻ tấn công có thể thực hiện tấn công brute-force để dò mật khẩu của nạn nhân.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mức độ ảnh hưởng:** Trung bình.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Phạm vi ảnh hưởng:** Chỉ ảnh hường đến user để mật khẩu yếu và dễ đoán.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Hậu quả:** Đánh cắp thông tin và kiểm soát tài khoản của nạn nhân.
 </br>
 
-### **C. Lỗ hổng**
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lỗ hổng
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mức độ ảnh hưởng:**
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Phạm vi ảnh hưởng:**
-#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Hậu quả:**
+### **C. Insecure Authentication:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trang web có chức năng thay đổi mật khẩu mới khi người dùng quên mật khẩu, khi đó một mã xác thực sẽ được gửi đến mail của người dùng, cho phép họ thay đổi mật khẩu cho mình. Trong mã xác thực này chứ tên của người dùng và thời hạn sử dụng, trang web sẽ dựa trên các thông tin này để cho phép đổi mật khẩu mới hay không, tuy nhiên mã xác thực này rất yếu, kẻ tấn công có khả năng tạo một mã xác thực khác tương tự và có thể thay đổi mật khẩu của bất kỳ user nào trong hệ thống.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mức độ ảnh hưởng:** Cao.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Phạm vi ảnh hưởng:** Tất cả user tồn tại trong hệ thống.
+#### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Hậu quả:** Đánh cắp thông tin và kiểm soát tài khoản của nạn nhân. Leo thang đặc quyền đối các tài khoản admin.
 </br>
 
 ### **D. Lỗ hổng**
@@ -257,3 +257,6 @@ docker-compose down
 
 ---
 © Group **Pengu** - University of Information Technology
+
+$2a$10$h4u163FTe.NaXBR5X0Yv6uf1ZCa52j3EOUnwUxDoQqqgLQiCs5quC
+$2a$10$a/ugSBgOsxP2f0m8H1Jo0uRWPO2GLcGYjKps4Sy3LVPLFoAflo8xC

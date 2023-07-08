@@ -278,7 +278,7 @@ public class UserServiceImpl implements UserService {
 
 		if (!inputValidationSER.checkInput(password))
 			throw new MyBadRequestException("Contain illegal character");
-		this.PasswordIsGood(password);
+		// this.PasswordIsGood(password);
 
 		user.setPassword(passwordEncoder.encode(password));
 		UserREPO.save(user);

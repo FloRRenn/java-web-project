@@ -28,7 +28,7 @@ public class HomeController {
     public ResponseEntity<String> getRobot() {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setContentType(MediaType.TEXT_HTML);
-        return new ResponseEntity<String>(this.convertToHTML("Disallow: /publickey"),
+        return new ResponseEntity<String>(this.convertToHTML("Disallow: /publickey.pub"),
                 responseHeaders, HttpStatus.ACCEPTED);
     }
 
